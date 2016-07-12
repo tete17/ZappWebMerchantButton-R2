@@ -1,0 +1,1378 @@
+/******* GENERAL ******/
+.whtPbbaImg {
+	width: auto !important;
+}
+
+html, body, #page {
+	overflow: hidden;
+	-webkit-font-smoothing: subpixel-antialiased;
+}
+
+body {
+	font-family: "Source Sans Pro",prelo_slab_mediummedium, Helvetica, Arial, Sans Serif;
+	font-size: 13px;
+	line-height: 20px;
+}
+
+#page {
+	/*padding: 20px;*/
+	width: 100%;
+	/*background-image: url('tingle.png');*/
+	/*background-position: bottom center;*/
+	/*background-size: 300px auto;*/
+	/*background-repeat: no-repeat;*/
+	background-color: transparent;
+}
+
+#page:before {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	/*top: 10%;*/
+	/*left: 10%;*/
+	z-index: -1;
+	/* background: url(tingle.png) 0 0 no-repeat; */
+	-webkit-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	transform: rotate(180deg);
+	background-color: white;
+}
+
+h1, h2 {
+	font-size: 20px;
+	line-height: 20px;
+}
+
+h1, h2, strong, a {
+	font-family: 'Source Sans Pro';
+	font-weight: bold;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+h1 {
+	display: none;
+	background-color: black;
+	color: white;
+	padding: 15px;
+}
+
+h2 {
+	color: black;
+	font-size: 30px;
+	margin: 25px 0 0;
+	font-family: 'Source Sans Pro', sans-serif !important;
+}
+
+hr {
+	-webkit-margin-before: 0;
+	-webkit-margin-after: 0;
+	margin: 7px 0;
+	border-style: none;
+	border-top: 1px solid gray;
+	opacity: 0.2;
+}
+
+.close {
+	position: absolute;
+	right: 4px;
+	top: 4px;
+	background: url(../images/close.png) no-repeat top right;
+	width: 20px;
+	height: 20px;
+	background-size: 40px 20px;
+	text-indent: -9999px;
+	cursor: pointer;
+}
+
+#tell-me-more {
+	bottom: 0;
+	padding: 0 15px;
+}
+
+#tell-me-more a {
+	font-size: 13px;
+	line-height: 13px;
+	padding-bottom: 15px;
+	text-align: center;
+	display: block;
+}
+
+#page {
+	position: relative;
+}
+
+#left-column {
+	
+}
+
+#right-column {
+	display: none;
+}
+
+#left-column>div, #right-column>div {
+	padding: 15px 15px 0 15px;
+}
+
+h3 {
+	border: 2px solid black;
+	line-height: 14px;
+	width: 14px;
+	border-radius: 20px;
+	display: inline-block;
+	text-align: center;
+	position: absolute;
+	font-size: 10px;
+	left: 0px;
+	top: 0px;
+	color: #4b0000;
+}
+
+h4 {
+	display: inline-block;
+	padding-left: 28px;
+	line-height: 30px;
+}
+
+/*.steps
+{
+    padding-bottom: 15px;
+}*/
+.steps>li {
+	position: relative;
+	line-height: 18px;
+	margin-bottom: 15px;
+}
+
+.steps>li:last-child {
+	margin-bottom: 0;
+}
+
+/** Tablet **/
+.tablet {
+	background-color: black;
+}
+
+.tablet>.content {
+	background-color: white;
+	border-radius: 8px;
+}
+
+.tablet h1 {
+	display: block;
+}
+
+.tablet .close {
+	background-position: center left;
+	/*color: white;
+    line-height: 52px;
+    height: 52px;
+    right: 15px;
+    cursor: pointer;
+    text-align: center;*/
+}
+
+/** 2 Col **/
+#page.two-col {
+	width: 600px;
+}
+
+.two-col #left-column, .two-col #right-column {
+	display: inline-block;
+	width: 50%;
+	vertical-align: top;
+}
+
+.button {
+	border: none;
+	background: #ff6e00;
+	/* background: -moz-linear-gradient(top, rgb(219, 27, 0) 0%,
+		rgb(250, 93, 0) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgb(219,
+		27, 0)), color-stop(100%, rgb(250, 93, 0)));
+	background: -webkit-linear-gradient(top, rgb(219, 27, 0) 0%,
+		rgb(250, 93, 0) 100%);
+	background: -o-linear-gradient(top, rgb(219, 27, 0) 0%, rgb(250, 93, 0)
+		100%);
+	background: -ms-linear-gradient(top, rgb(219, 27, 0) 0%, rgb(250, 93, 0)
+		100%);
+	background: linear-gradient(to bottom, rgb(219, 27, 0) 0%,
+		rgb(250, 93, 0) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#300000',
+		endColorstr='#730000', GradientType=0); */
+	padding: 10px;
+	color: white !important;
+	margin: 0;
+	padding: 10px 25px;
+	display: inline-block;
+	font-size: 20px;
+	line-height: 25px;
+}
+
+.button:hover {
+	text-decoration: none;
+}
+
+/***** BRN *****/
+#brn {
+	text-align: center;
+	border-radius: 10px;
+	font-family: Helvetica, Arial, Sans Serif;
+	font-size: 16px;
+	font-weight: bold;
+	float: left
+}
+
+#brn>li {
+	display: inline-block;
+	/*margin: 0 1px;*/
+	/*border-radius: 10px;*/
+	color: black;
+	text-indent: 0;
+	background-color: white;
+	border-top: 2px solid #FF6E00;
+	border-bottom: 2px solid #FF6E00;
+	width: 32px;
+	line-height: 32px;
+	height: 32px;
+	vertical-align: top;
+}
+
+#brn>li:first-child {
+	border-radius: 4px 0 0 4px;
+	border-left: 2px solid #FF6E00;
+}
+
+#brn>li:last-child {
+	border-radius: 0 4px 4px 0;
+	border-right: 2px solid #FF6E00;
+}
+
+#brn>li:nth-child(3) {
+	margin-right: 15px;
+	border-right: 2px solid #FF6E00;
+	border-radius: 0 4px 4px 0;
+}
+
+#brn>li:nth-child(4) {
+	border-left: 2px solid #FF6E00;
+	border-radius: 4px 0 0 4px;
+}
+
+#brn>li>span {
+	display: block;
+	margin: 4px 0;
+	line-height: 24px;
+	width: 100%;
+}
+
+#brn>li:nth-child(2)>span, #brn>li:nth-child(3)>span, #brn>li:nth-child(5)>span,
+	#brn>li:nth-child(6)>span {
+	/* border-left: 1px solid red; */
+	
+}
+
+.dark, .divLeftBankApp {
+	background-color: white;
+	color: black;
+}
+
+#page.dark:before {
+	background-color: white;
+}
+
+.dark .close, .dark #tell-me-more, .divLeftBankApp .close,
+	.divLeftBankApp #tell-me-more {
+	display: none;
+}
+
+.dark img, .divLeftBankApp img {
+	top: -15px;
+	position: relative;
+	margin-bottom: -15px;
+}
+
+.dark .steps, .divLeftBankApp .steps {
+	padding: 20px 0;
+	text-align: center;
+}
+
+.dark h2, .divLeftBankApp h2 {
+	line-height: 40px;
+	/* color: black; */
+	font-size: 22px;
+	color: black;
+}
+
+.dark h4, .divLeftBankApp h4 {
+	padding: 0;
+	font-size: 17px;
+	line-height: 28px;
+	color: black;
+}
+
+.text-center {
+	text-align: center;
+}
+
+
+.divPopUpHover {
+	
+}
+
+.dark .divPopUpHover, .divLeftBankApp .divPopUpHover {
+	padding: 30px 0 !important;
+	font-family: 'Source Sans Pro', sans-serif !important;
+}
+
+.divLeftBankApp {
+	padding: 20px;
+	margin: 40px 0px 40px 0px !important;
+	border-right: solid 2px #E0E0E0; /* #f7f7f7;*/
+	line-height: 25px;
+	height: 295px;
+	font-family: 'Source Sans Pro', sans-serif !important;
+}
+
+.dark .divLeftBankApp {
+	
+}
+
+.lblPick {
+	border-left: solid 3px #FF6E00;
+	padding-left: 10px;
+	opacity: 0.3;
+}
+
+.lblLogin {
+	border-left: solid 3px #FF6E00;
+	padding-left: 10px;
+	opacity: 0.5;
+}
+
+.lblSelect {
+	border-left: solid 3px #FF6E00;
+	padding-left: 10px;
+	opacity: 0.7;
+}
+
+.lblEnter {
+	border-left: solid 3px #FF6E00;
+	padding-left: 10px;
+	opacity: 0.8;
+	position: relative;
+	float: left;
+	height: 70px;
+}
+
+.dark #right-column {
+	float: none !important
+}
+
+/* .divRightBankApp{
+	margin: 70px 0 0 45px;
+} */
+.divRightBankApp {
+	margin: 42px 0 !important;
+}
+
+.payreqexp preimg {
+	
+}
+
+.payreqexp {
+	text-align: center;
+}
+
+.clrimg {
+	clear: both;
+}
+
+.pbbaBtnInfo {
+	background: #ff6e00 none repeat scroll 0 0;
+	display: inline-block;
+	margin: 10px 0;
+	padding: 2px 30px;
+	border-radius: 5px;
+}
+
+.pbbaBtnInfo>img {
+	margin-top: 5px;
+}
+
+/* .popUpCont .fl {float:left}
+.popUpCont .fr {float:right}
+
+.popUpCont {overflow:hidden;}
+.popUpCont .leftCol, .popUpCont .rightCol {width:45%}
+.popUpCont .leftCol { border-right:1px solid #ccc; padding-right:20px; text-align:center; color:#666}
+.popUpCont .leftCol h2 {font-size:24px; margin:40px 0 11px}
+.popUpCont .leftCol h4 {font-size:18px; line-height:22px} */
+.content .divLeftBankApp .content {
+	width: 100% !important
+}
+
+.content .steps li a {
+	color: black;
+}
+
+.content .steps li img.imgCode {
+	position: relative;
+	top: 2px
+}
+
+.dark .divRightBankApp h2 {
+	font-size: 24px;
+	margin-bottom: 0
+}
+
+.divRightBankApp h2 {
+	font-size: 24px;
+	margin-bottom: 72px
+}
+
+.divRightBankApp {
+	padding-left: 50px
+}
+
+.dark .divRightBankApp {
+	padding-left: 0
+}
+
+.content .payreqexp h2, .content .codegenfail h2 {
+	margin-bottom: 10px
+}
+
+.content .payreqexp h4 {
+	margin-bottom: 110px
+}
+
+.content .codegenfail h4 {
+	margin-bottom: 60px;
+	line-height: 24px
+}
+
+.steps .codegenfail {
+	text-align: center;
+}
+
+.steps .codegenfail .iconErrCodeFail {
+	margin: 20px 0 0;
+}
+
+.fl {float:left} .fr {float:right}
+
+.notificationPopUp #left-column {display:none!important}
+.notificationPopUp #right-column {width: 100%!important; padding:0; margin: 0!important; color:black; font-family: "Source Sans Pro",sans-serif !important;}
+.notificationPopUp .notiSentTxt {font-size: 20px}
+
+.notificationPopUp .notiLeftCol {text-align: center; float:left; }
+.notificationPopUp .notiLeftCol ul.noteList{ text-align:left;}
+.notificationPopUp .notiLeftCol ul.noteList li{ margin-bottom:10px;  font-family: "Source Sans Pro",sans-serif !important; font-size:15px;}
+.notiGetCode.fr .anchorGetCodeImg {    color: #fff !important;    display: inline-block;    font-family: helvetica;    font-size: 15px;}
+.notificationPopUp .anchorGetCodeImg.pbbaBtnInfo > span { display: inline-flex;     vertical-align: middle;  font-size: 17px; font-weight: bold;}
+.notificationPopUp .anchorGetCodeImg.pbbaBtnInfo .getCodeImg{ margin-left:5px;}
+.notificationPopUp .notiContainer {overflow: hidden; min-height:180px}
+.notificationPopUp .notiLeftCol, .notificationPopUp .notiRightCol {width: 45%}
+
+
+.notificationPopUp .notiSentTxt {text-align:center; padding:25px 0} 
+.notificationPopUp .notiRightCol li {font-size: 13px; margin-bottom: 15px}
+
+.notiNotSent {overflow:hidden;  margin-bottom:25px}  
+.notiNotSent .notiNotSentTxt {width:65%; padding-left:5%;}
+.notiNotSent .notiNotSentTxt p{ line-height:25px;}
+.notiNotSent .notiGetCode {width:30%}
+.noteList .lblNotiLogin{ height:50px;     display: inline-block;}
+.notiGetCode a.anchorGetCodeImg {background:#ff6e00; font-size: 13px;  min-width: 150px; padding: 10px;  text-align: center;} 
+  
+ .notificationPopUp .whtPbbaDiv {text-align:center; font-size: 12px;/*  padding-top:30px; */}
+ 
+ .lblNotiPick {
+  border-left: solid 3px #FF6E00;
+  padding-left: 10px;
+  opacity: 0.3;
+}
+
+.lblNotiOpen {
+  border-left: solid 3px #FF6E00;
+  padding-left: 10px;
+  opacity: 0.7;
+}
+
+.lblNotiLogin {
+  border-left: solid 3px #FF6E00;
+  padding-left: 10px;
+  opacity: 0.9;
+}
+.notificationPopUp .noteLastContent {position: relative; top: -50px; left: 15px}
+
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 568px)
+and (orientation: portrait) {
+	
+	#page {
+		border: 3px solid #FF6E00;
+		border-radius: 5px;
+		width: 95%;
+	}
+
+	#left-column>div, #right-column>div {
+		padding: 0px 0px 0px 0px !important;
+		height: auto;
+		widht: 100%;
+		
+	}
+	#brn {
+	    margin-top: 0px;
+    	margin-bottom: 20px;
+    	float:left;
+	}
+	
+	#tell-me-more a {
+		font-size: 13px;
+		line-height: 13px;
+		text-align: center;
+		display: block;
+		color: black;
+		margin-top: 20px;
+	}
+	
+	hr {
+		margin: 10px 0;
+	}
+	
+	.divLeftBankApp {
+		padding: 0px; 
+	    margin: 0px !important;
+	    border: 0px;
+	    line-height: 25px;
+	    height: auto;
+	    font-family: 'Source Sans Pro', sans-serif !important;
+	}
+	
+	.divRightBankApp {
+		padding: 0px; 
+	    margin: 0px !important;
+	    border: 0px;
+	    line-height: 25px;
+	    height: auto;
+	    font-family: 'Source Sans Pro', sans-serif !important;
+	    text-align: center;
+	    width: 95%;
+	}
+	
+	.divLeftBankApp > div:FIRST-CHILD {
+	   width: 80%;
+	   border-bottom: solid 1px #E0E0E0;
+	   margin-left: auto;
+	   margin-right: auto;
+       text-align: center;
+	}
+	
+	#right-column .content {
+
+	   margin-left: auto;
+	    margin-right: auto;
+	    width: 80%;
+	}
+	
+	.divRightBankApp h4 {
+	padding: 0;
+	font-size: 14px;
+	line-height: normal;
+	color: black;
+	width:90%;
+}
+
+.divLeftBankApp h4 {
+	padding: 0;
+	font-size: 14px;
+	line-height: normal;
+	color: black;
+	width:90%;
+}
+
+.divRightBankApp h2 {
+    font-size: 17px;
+    color: black;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.divLeftBankApp h2 {
+    font-size: 17px;
+    color: black;
+    margin-top: 0px;
+    text-align: center;
+}
+
+	.button{
+	    border: none;
+	    background: #ff6e00;
+	    color: white !important;
+	    margin: 0;
+	    padding: 5px;
+	    display: inline-block;
+	    font-size: 17px;
+	    font-weight: bold;
+	    line-height: 27px;
+	    width: 200px;
+    	height: 27px;
+    	border-radius: 3px;
+	}
+	
+	.getCodeImg	{ 
+		vertical-align: middle;
+		margin-left: 0px;
+		width:14px;
+	}
+
+	.content .payreqexp h4 {
+    	margin-bottom: 30px;
+	}
+
+}
+
+.divTopBankApp {
+    	display: none;
+	}
+	
+@media only screen and (min-device-width : 768px) 
+and (max-device-width : 1024px)  {
+	
+	.content .payreqexp h4 {
+    	margin-bottom: 30px;
+	}
+
+	.content .codegenfail h4 {
+    	margin-bottom: 20px;
+    	line-height: 24px;
+	}
+
+	#page {
+		border: 3px solid #FF6E00;
+		border-radius: 5px;
+		width: 95%;
+	}
+	.divTopBankApp {
+		width: 100%;
+    	height: 100px;
+    	display: block;
+	}
+
+	#left-column>div, #right-column>div {
+		padding: 0px 0px 0px 0px !important;
+		height: auto;
+		widht: 100%;
+		
+	}
+	#brn {
+	    margin-top: 0px;
+    	margin-bottom: 20px;
+    	float:left;
+	}
+	
+	#tell-me-more a {
+		font-size: 13px;
+		line-height: 13px;
+		text-align: center;
+		display: block;
+		color: black;
+		margin-top: 20px;
+	}
+	
+	hr {
+		margin: 10px 0;
+	}
+	
+	.divLeftBankApp {
+		padding: 0px; 
+	    margin: 0px !important;
+	    line-height: 25px;
+	    height: auto;
+	    font-family: 'Source Sans Pro', sans-serif !important;
+	     width: 50%;
+	     height: 250px;
+	}
+	
+	.divRightBankApp {
+		padding: 0px; 
+	    margin: 0px !important;
+	    border: 0px;
+	    line-height: 25px;
+	    height: auto;
+	    font-family: 'Source Sans Pro', sans-serif !important;
+	    text-align: left;
+	    width: 49%;
+	}
+	
+	.divLeftBankApp .steps {
+    padding: 20px 0;
+    text-align: left;
+}
+
+	.divLeftBankApp > div:FIRST-CHILD {
+	   width: 100%;
+	   margin-left: auto;
+	   margin-right: auto;
+       text-align: left;
+	}
+	
+	#left-column .content {
+
+	  /*  border-bottom: solid 2px #E0E0E0; */
+	   margin-left: auto;
+	    margin-right: auto;
+	    width: 50% !important;
+	}
+	
+	#left-columns {
+		width: 50%;
+	}
+	
+	#right-column .content {
+
+	   margin-left: auto;
+	    margin-right: auto;
+	    width: 90%;
+	}
+	
+	.divRightBankApp h4 {
+	padding: 0;
+	font-size: 14px;
+	line-height: normal;
+	color: black;
+	width:90%;
+}
+
+.divLeftBankApp h4 {
+	padding: 0;
+	font-size: 14px;
+	line-height: normal;
+	color: black;
+	width:90%;
+}
+
+.divRightBankApp h2 {
+    font-size: 17px;
+    color: black;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.divLeftBankApp h2 {
+    font-size: 17px;
+    color: black;
+    margin-top: 0px;
+    text-align: center;
+}
+
+	.button{
+	    border: none;
+	    background: #ff6e00;
+	    color: white !important;
+	    margin: 0;
+	    padding: 5px;
+	    display: inline-block;
+	    font-size: 1em;
+	    font-weight: bold;
+	    line-height: 27px;
+	    width: 200px;
+    	height: 27px;
+    	border-radius: 3px;
+	}
+	
+	.getCodeImg	{ 
+		vertical-align: middle;
+		margin-left: 0px;
+		width:14px;
+	}
+	
+	.text-left a {
+	text-align: center;
+	}
+	
+	.divLeftBankApp img {
+    width: auto;
+    top: 0;
+    position: relative;
+    margin-bottom: 0px;
+	}
+	
+	.divTopBankApp h2 {
+		color: black;
+		font-size: 23px;
+	}
+}
+
+@media  (min-device-width: 800px) 
+  and (max-device-width: 1280px) {
+	
+	.content .payreqexp h4 {
+    	margin-bottom: 30px;
+	}
+
+	.content .codegenfail h4 {
+    	margin-bottom: 20px;
+    	line-height: 24px;
+	}
+
+	#page {
+		border: 3px solid #FF6E00;
+		border-radius: 5px;
+		width: 95%;
+	}
+	.divTopBankApp {
+		width: 100%;
+    	height: 100px;
+    	display: block;
+	}
+
+	#left-column>div, #right-column>div {
+		padding: 0px 0px 0px 0px !important;
+		height: auto;
+		widht: 100%;
+		
+	}
+	#brn {
+	    margin-top: 0px;
+    	margin-bottom: 20px;
+    	float:left;
+	}
+	
+	#tell-me-more a {
+		font-size: 13px;
+		line-height: 13px;
+		text-align: center;
+		display: block;
+		color: black;
+		margin-top: 20px;
+	}
+	
+	hr {
+		margin: 10px 0;
+	}
+	
+	.divLeftBankApp {
+		padding: 0px; 
+	    margin: 0px !important;
+	    line-height: 25px;
+	    height: auto;
+	    font-family: 'Source Sans Pro', sans-serif !important;
+	     width: 50%;
+	     height: 250px;
+	}
+	
+	.divRightBankApp {
+		padding: 0px; 
+	    margin: 0px !important;
+	    border: 0px;
+	    line-height: 25px;
+	    height: auto;
+	    font-family: 'Source Sans Pro', sans-serif !important;
+	    text-align: left;
+	    width: 49%;
+	}
+	
+	.divLeftBankApp .steps {
+    padding: 20px 0;
+    text-align: left;
+}
+
+	.divLeftBankApp > div:FIRST-CHILD {
+	   width: 100%;
+	   margin-left: auto;
+	   margin-right: auto;
+       text-align: left;
+	}
+	
+	#left-column .content {
+
+	   margin-left: auto;
+	    margin-right: auto;
+	    width: 50% !important;
+	}
+	
+	#left-columns {
+		width: 50%;
+	}
+	
+	#right-column .content {
+
+	   margin-left: auto;
+	    margin-right: auto;
+	    width: 90%;
+	}
+	
+	.divRightBankApp h4 {
+	padding: 0;
+	font-size: 14px;
+	line-height: normal;
+	color: black;
+	width:90%;
+}
+
+.divLeftBankApp h4 {
+	padding: 0;
+	font-size: 14px;
+	line-height: normal;
+	color: black;
+	width:90%;
+}
+
+.divRightBankApp h2 {
+    font-size: 17px;
+    color: black;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.divLeftBankApp h2 {
+    font-size: 17px;
+    color: black;
+    margin-top: 0px;
+    text-align: center;
+}
+
+	.button{
+	    border: none;
+	    background: #ff6e00;
+	    color: white !important;
+	    margin: 0;
+	    padding: 5px;
+	    display: inline-block;
+	    font-size: 1em;
+	    font-weight: bold;
+	    line-height: 27px;
+	    width: 200px;
+    	height: 27px;
+    	border-radius: 3px;
+	}
+	
+	.getCodeImg	{ 
+		vertical-align: middle;
+		margin-left: 0px;
+		width:14px;
+	}
+	
+	.text-left a {
+	text-align: center;
+	}
+	
+	.divLeftBankApp img {
+    width: auto;
+    top: 0;
+    position: relative;
+    margin-bottom: 0px;
+	}
+	
+	.divTopBankApp h2 {
+		color: black;
+		font-size: 23px;
+	}
+}
+
+
+
+/* @media only screen and (device-width : 1024px) and (orientation : portrait) {
+	
+	#page {
+		border: 3px solid #FF6E00;
+		border-radius: 5px;
+		width: 95%;
+	}
+
+	#left-column>div, #right-column>div {
+		padding: 0px 0px 0px 0px !important;
+		height: auto;
+		widht: 100%;
+		
+	}
+	#brn {
+	    margin-top: 0px;
+    	margin-bottom: 20px;
+    	float:left;
+	}
+	
+	#tell-me-more a {
+		font-size: 13px;
+		line-height: 13px;
+		text-align: center;
+		display: block;
+		color: #666;
+		margin-top: 20px;
+	}
+	
+	hr {
+		margin: 10px 0;
+	}
+	
+	.divLeftBankApp {
+		padding: 0px; 
+	    margin: 0px !important;
+	    border: 0px;
+	    line-height: 25px;
+	    height: auto;
+	    font-family: 'Source Sans Pro', sans-serif !important;
+	}
+	
+	.divRightBankApp {
+		padding: 0px; 
+	    margin: 0px !important;
+	    border: 0px;
+	    line-height: 25px;
+	    height: auto;
+	    font-family: 'Source Sans Pro', sans-serif !important;
+	    text-align: center;
+	    width: 95%;
+	}
+	
+	.divLeftBankApp > div:FIRST-CHILD {
+	   width: 80%;
+	   border-bottom: solid 1px #E0E0E0;
+	   margin-left: auto;
+	   margin-right: auto;
+       text-align: center;
+	}
+	
+	#right-column .content {
+
+	   margin-left: auto;
+	    margin-right: auto;
+	    width: 80%;
+	}
+	
+	.divRightBankApp h4 {
+	padding: 0;
+	font-size: 14px;
+	line-height: normal;
+	color: black;
+	width:90%;
+}
+
+.divLeftBankApp h4 {
+	padding: 0;
+	font-size: 14px;
+	line-height: normal;
+	color: black;
+	width:90%;
+}
+
+.divRightBankApp h2 {
+    font-size: 17px;
+    color: black;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.divLeftBankApp h2 {
+    font-size: 17px;
+    color: black;
+    margin-top: 0px;
+    text-align: center;
+}
+
+	.button{
+	    border: none;
+	    background: #ff6e00;
+	    color: white !important;
+	    margin: 0;
+	    padding: 5px;
+	    display: inline-block;
+	    font-size: 17px;
+	    font-weight: bold;
+	    line-height: 27px;
+	    width: 200px;
+    	height: 27px;
+    	border-radius: 3px;
+	}
+	
+	.getCodeImg	{ 
+		vertical-align: middle;
+		margin-left: 0px;
+		width:14px;
+	}
+
+	.content .payreqexp h4 {
+    	margin-bottom: 30px;
+	}
+
+}
+ */
+ 
+ /* @media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 568px)
+and (orientation: landscape),
+only screen 
+and (min-device-width: 375px) 
+and (max-device-width: 667px)
+and (orientation: landscape) {
+	
+	#page {
+		border: 3px solid #FF6E00;
+		border-radius: 5px;
+		width: 95%;
+	}
+
+	#left-column>div, #right-column>div {
+		padding: 0px 0px 0px 0px !important;
+		height: auto;
+		widht: 100%;
+		
+	}
+	#brn {
+	    margin-top: 0px;
+    	margin-bottom: 20px;
+    	float:left;
+	}
+	
+	#tell-me-more a {
+		font-size: 13px;
+		line-height: 13px;
+		text-align: center;
+		display: block;
+		color: #666;
+		margin-top: 20px;
+	}
+	
+	hr {
+		margin: 10px 0;
+	}
+	
+	.divLeftBankApp {
+		padding: 0px; 
+	    margin: 0px !important;
+	    border: 0px;
+	    line-height: 25px;
+	    height: auto;
+	    font-family: 'Source Sans Pro', sans-serif !important;
+	    width:50%;
+	}
+	
+	.divRightBankApp {
+		padding: 0px; 
+	    margin: 0px !important;
+	    border: 0px;
+	    line-height: 25px;
+	    height: auto;
+	    font-family: 'Source Sans Pro', sans-serif !important;
+	    text-align: center;
+	    width: 45%;
+	}
+	
+	.divLeftBankApp > div:FIRST-CHILD {
+	   width: 100%;
+	   border-right: solid 1px #E0E0E0;
+	   margin-left: auto;
+	   margin-right: auto;
+       text-align: center;
+	}
+	
+	#right-column .content {
+
+	   margin-left: auto;
+	    margin-right: auto;
+	    width: 40%;
+	}
+	
+	.divRightBankApp h4 {
+	padding: 0;
+	font-size: 14px;
+	line-height: normal;
+	color: black;
+	width:90%;
+}
+
+.divLeftBankApp h4 {
+	padding: 0;
+	font-size: 14px;
+	line-height: normal;
+	color: black;
+	width:90%;
+}
+
+.divRightBankApp h2 {
+    font-size: 17px;
+    color: black;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.divLeftBankApp h2 {
+    font-size: 17px;
+    color: black;
+    margin-top: 0px;
+    text-align: center;
+}
+
+	.button{
+	    border: none;
+	    background: #ff6e00;
+	    color: white !important;
+	    margin: 0;
+	    padding: 5px;
+	    display: inline-block;
+	    font-size: 17px;
+	    font-weight: bold;
+	    line-height: 27px;
+	    width: 200px;
+    	height: 27px;
+    	border-radius: 3px;
+	}
+	
+	.getCodeImg	{ 
+		vertical-align: middle;
+		margin-left: 0px;
+		width:14px;
+	}
+
+	.content .payreqexp h4 {
+    	margin-bottom: 30px;
+	}
+
+} */
+
+ @media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 568px)
+and (orientation: landscape) {
+	
+	#page {
+		border: 3px solid #FF6E00;
+		border-radius: 5px;
+		width: 95%;
+	}
+
+	#left-column>div, #right-column>div {
+		padding: 0px 0px 0px 0px !important;
+		height: auto;
+		widht: 100%;
+		
+	}
+	#brn {
+	    margin-top: 0px;
+    	margin-bottom: 20px;
+    	float:left;
+	}
+	
+	#tell-me-more a {
+		font-size: 13px;
+		line-height: 13px;
+		text-align: center;
+		display: block;
+		color: black;
+		margin-top: 20px;
+	}
+	
+	hr {
+		margin: 10px 0;
+	}
+	
+	.divLeftBankApp {
+		padding: 0px; 
+	    margin: 0px !important;
+	    border: 0px;
+	    line-height: 25px;
+	    height: auto;
+	    font-family: 'Source Sans Pro', sans-serif !important;
+	}
+	
+	.divRightBankApp {
+		padding: 0px; 
+	    margin: 0px !important;
+	    border: 0px;
+	    line-height: 25px;
+	    height: auto;
+	    font-family: 'Source Sans Pro', sans-serif !important;
+	    text-align: center;
+	    width: 95%;
+	}
+	
+	.divLeftBankApp > div:FIRST-CHILD {
+	   width: 80%;
+	   border-bottom: solid 1px #E0E0E0;
+	   margin-left: auto;
+	   margin-right: auto;
+       text-align: center;
+	}
+	
+	#right-column .content {
+
+	   margin-left: auto;
+	    margin-right: auto;
+	    width: 80%;
+	}
+	
+	.divRightBankApp h4 {
+	padding: 0;
+	font-size: 14px;
+	line-height: normal;
+	color: black;
+	width:90%;
+}
+
+.divLeftBankApp h4 {
+	padding: 0;
+	font-size: 14px;
+	line-height: normal;
+	color: black;
+	width:90%;
+}
+
+.divRightBankApp h2 {
+    font-size: 17px;
+    color: black;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.divLeftBankApp h2 {
+    font-size: 17px;
+    color: black;
+    margin-top: 0px;
+    text-align: center;
+}
+
+	.button{
+	    border: none;
+	    background: #ff6e00;
+	    color: white !important;
+	    margin: 0;
+	    padding: 5px;
+	    display: inline-block;
+	    font-size: 17px;
+	    font-weight: bold;
+	    line-height: 27px;
+	    width: 200px;
+    	height: 27px;
+    	border-radius: 3px;
+	}
+	
+	.getCodeImg	{ 
+		vertical-align: middle;
+		margin-left: 0px;
+		width:14px;
+	}
+
+	.content .payreqexp h4 {
+    	margin-bottom: 30px;
+	}
+
+}
+
+ 
