@@ -6,6 +6,14 @@
 
     zapp.events = {};
 
+    function removePopup(self) {
+    	
+    	if (document.getElementById('cover') != "undefined")
+    		document.getElementById('cover').remove();
+    	
+    	self._finish();
+    }
+    
     function addMethods(proto, methods)
     {
         for (var methodSig in methods)
@@ -331,7 +339,7 @@
                     }
                     else
                     {
-
+                    	//removePopup(self);
                     }
                 });
             }, merchantPollInterval);
@@ -394,6 +402,7 @@
         },
         _notify: function(response)
         {
+        	removePopup(this);
         }
     });
 
