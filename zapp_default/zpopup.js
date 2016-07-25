@@ -141,9 +141,21 @@ function ReadCookie(name)
   return null;
 }
 
+function isCookieEnabled(){
+    var cookieEnabled=(navigator.cookieEnabled)? true : false;
+    if (typeof navigator.cookieEnabled=="undefined" && !cookieEnabled){ 
+        document.cookie="testcookie";
+        cookieEnabled=(document.cookie.indexOf("testcookie")!=-1)? true : false;
+    }
+    return (cookieEnabled) ? true : false;
+}
+
+
 function setupPayConnect(url, document) {
 	
-	
+	if (!isCookieEnabled()) {
+		return;
+	}
 	
 	 var doc = document;
 	 var iframe = doc.createElement('iframe');
@@ -158,7 +170,9 @@ function setupPayConnect(url, document) {
 			window.location.href = url + "cookie-management/index.html";
 		}, 10);
 		
-		document.cookie = "redirect-page-cookie=dummy; path=/;expires: 6";
+		var date = new Date();
+ 		date.setTime(date.getTime()+(24*60*60*1000));
+ 		document.cookie = "redirect-page-cookie=dummy; path=/;expires= "+date.toGMTString();
 			
 	} else {
 		iframe.src = url + "cookie-management/index.html";
@@ -180,14 +194,14 @@ function listener(event){
     if (event.data.indexOf("pcid") != 0 && event.data.indexOf("hasApp") != 0)
 	    return
 	 
-	if (event.data.indexOf("hasApp") == 0) {
+    if (event.data.indexOf("hasApp") == 0) {
 	    document.cookie = "hasApp=" + event.data.split('=')[1]  + '; path=/';
 	}
 	
 	if (event.data.indexOf("pcid") == 0) {
 	  if (event.data.split('=')[1] == "dummy")
 	   		return
-	    document.cookie = "pcid=" + event.data.split('=')[1]  + '; path=/';
+	    document.cookie = "pcid=" + event.data.split('=')[1]  + '; path=/; secure=true';
 	}
 	
 	

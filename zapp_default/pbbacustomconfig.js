@@ -21,7 +21,7 @@ limitations under the License. */
 /* Define the PBBA variables */
 
 var zappVersion = "2.0.0"; // Current web merchant button library version.
-var cookieManagementUrl = "http://www.paybybankapp.co.uk/" // Cookie management URL for PayConnect.
+var cookieManagementUrl = "https://www.paybybankapp.co.uk/" // Cookie management URL for PayConnect.
 var imageKey = 1; // Default imageKey is 1 for the standard Pay By Bank App Web Merchant Button.
 var merchantPollInterval = 5000; // Default merchant poll interval of 5 seconds to poll the merchant server for payment notification.
 
