@@ -114,8 +114,7 @@ zapp.load(zappVersion, {
 		 *		A.	Create a new response object by populating the following fields:
 		 *
 		 *			var response = new zapppopup.response.notify({
-						success : false,
-						errorCode : 12
+						success : false
 					});
 		 *
 		 *		B.	Make a callback passing in the response object created in Step A above:
