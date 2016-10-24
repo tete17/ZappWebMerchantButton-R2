@@ -17,9 +17,15 @@ limitations under the License. */
  * This is needed for establishing pay connect. 
  */
 function setCookie(key, value, cookieExpiryDays, url) {
-		if (!zapppopup.isCookieEnabled()) {
+		if (!isCookieEnabled()) {
 			return;
 		}
-		var iframe = document.getElementById('pcid-iframe');
-		iframe.src = url +"cookie-management/index.html?pcid="+value+"&cookieExpiryDays="+cookieExpiryDays;
+		if (isTPCookieDisabled()) {
+			redirectToCookieManagementUrl(url, value, cookieExpiryDays);
+		} else {
+			var iframe = document.getElementById('pcid-iframe');
+			//iframe.contentWindow.postMessage('pcid:'+value+'|'+'cookieExpiryDays:'+cookieExpiryDays, '*'); 
+			iframe.src = url +"cookie-management/index.html?pcid="+value+"&cookieExpiryDays="+cookieExpiryDays;
+		}
+		
     }

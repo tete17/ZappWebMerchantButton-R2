@@ -20,6 +20,11 @@ limitations under the License. */
 
 window.zapppopup = window.zapppopup || {};
 var cookieManagementDomain = null;
+var cookieManagementURL = null;
+var pbbaCookies = {};
+var PCID_COOKIE = "pcid";
+var HAS_APP_COOKIE = "hasApp";
+var TP_COOKIE_DISABLED_COOKIE = "TPCookieDisabled";
 
 function extractDomain(url) {
     var domain;
@@ -128,6 +133,18 @@ function zAddEventListener(type, listener)
 
 })();
 
+function getQueryParams() {
+	var qParams = location.search.substring(1).split('&');
+	var vars = {};
+	var hash= [];
+	for(var i = 0; i < qParams.length; i++)
+    {
+        hash = qParams[i].split('=');
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
+
 function ReadCookie(name)
 {
   name += '=';
@@ -150,67 +167,138 @@ function isCookieEnabled(){
     return (cookieEnabled) ? true : false;
 }
 
+function isURLWorking(url) {
+	var isWorking = false;
+	$.ajax({url: url,
+        type: "HEAD",
+		async: false,
+        timeout:1000,
+        statusCode: {
+            200: function (response) {
+				console.log('200')
+                isWorking = true;
+            },
+            400: function (response) {
+                isWorking = false;
+            },
+            404: function (response) {
+                isWorking = false;
+            },
+            0: function (response) {
+                isWorking = false;
+            }              
+        }
+ });
+ return isWorking;
+}
+
+function refreshPcidIframe(url) {
+	var iframe = document.getElementById('pcid-iframe');
+	if (typeof iframe != 'undefined' && iframe != null) {
+		if (iframe.src.indexOf("cookie-management") == -1)
+		iframe.src = url + "cookie-management/index.html";
+	}
+}
+
+function cookieExists(cookie) {
+	return (document.cookie.indexOf(cookie) != -1 ) ? true : false;
+}
+
+function isTPCookieDisabled() {
+	return cookieExists(TP_COOKIE_DISABLED_COOKIE);
+}
+
+function deleteCookie(name) {
+	
+	document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+
+function createCookie(name) {
+	
+	document.cookie = name + '=;';
+}
+function createPcidIframe(url, document) {
+	if (isTPCookieDisabled()) {
+		return;
+	}
+	var iframe = document.getElementById('pcid-iframe');
+	if (typeof iframe == 'undefined' || iframe == null) {
+		var doc = document;
+		 iframe = doc.createElement('iframe');
+		 iframe.id="pcid-iframe";
+	     iframe.style.display = "none";
+	     doc.body.appendChild(iframe);
+	     iframe.src = url + "cookie-management/index.html";
+	}
+	return iframe;
+}
+
+function readPBBACookies() {
+	refreshPcidIframe(cookieManagementURL);
+}
+
+	
 
 function setupPayConnect(url, document) {
-	
 	if (!isCookieEnabled()) {
 		return;
 	}
 	
-	 var doc = document;
-	 var iframe = doc.createElement('iframe');
-	 iframe.id="pcid-iframe";
-    iframe.style.display = "none";
-    doc.body.appendChild(iframe);
-    var COOKIE_NAME = 'redirect-page-cookie';
-	var  cookie = ReadCookie(COOKIE_NAME);
 	cookieManagementDomain = extractDomain(url);
-	if (cookie == null) {
-		setTimeout(function(){
-			window.location.href = url + "cookie-management/index.html";
-		}, 10);
-		
-		var date = new Date();
- 		date.setTime(date.getTime()+(24*60*60*1000));
- 		document.cookie = "redirect-page-cookie=dummy; path=/;expires= "+date.toGMTString();
-			
-	} else {
-		iframe.src = url + "cookie-management/index.html";
-	 
+	cookieManagementURL = url;
+	createPcidIframe(url, document);
+}
+
+
+function redirectToCookieManagementUrl(url, pcid, cookieExpiryDays) {
+	
+	if (!isURLWorking(url +  "cookie-management/index.html")) {
+		return;
 	}
 	
+		setTimeout(function(){
+			window.location.href = url +  "cookie-management/index.html?pcid="+pcid+"&cookieExpiryDays="+cookieExpiryDays;
+		}, 10);
+	deleteCookie(TP_COOKIE_DISABLED_COOKIE);
 	
-    
-    
 }
 
 function listener(event){
 
+	
+	if (event.data.indexOf("read-pbba-cookies") == 0) {
+	    readPBBACookies();
+	    return;
+	}
+	
 	var origin = event.origin.toString();
 	
 	if (origin.indexOf(cookieManagementDomain) == -1 )
 		    return
 	
-    if (event.data.indexOf("pcid") != 0 && event.data.indexOf("hasApp") != 0)
+    if (event.data.indexOf(PCID_COOKIE) != 0 && event.data.indexOf(HAS_APP_COOKIE) != 0 && event.data.indexOf(TP_COOKIE_DISABLED_COOKIE) != 0)
 	    return
-	 
-    if (event.data.indexOf("hasApp") == 0) {
+	
+	if (event.data.indexOf(TP_COOKIE_DISABLED_COOKIE) == 0) {
+		createCookie(TP_COOKIE_DISABLED_COOKIE);
+		return;
+	}
+	
+	if (event.data.indexOf(HAS_APP_COOKIE) == 0) {
 	    document.cookie = "hasApp=" + event.data.split('=')[1]  + '; path=/';
 	}
 	
-	if (event.data.indexOf("pcid") == 0) {
-	  if (event.data.split('=')[1] == "dummy")
-	   		return
-	    document.cookie = "pcid=" + event.data.split('=')[1]  + '; path=/; secure=true';
+	if (event.data.indexOf(PCID_COOKIE) == 0) {
+	    document.cookie = "pcid=" + event.data.split('=')[1]  + '; path=/';
 	}
+	
 	
 	
 	  
 }
 
-
 if (window.addEventListener){
- addEventListener("message", listener, false)
+  addEventListener("message", listener, false)
 } else {
- attachEvent("onmessage", listener)
+  attachEvent("onmessage", listener)
 }

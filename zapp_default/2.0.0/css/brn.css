@@ -398,6 +398,8 @@ h4 {
 } */
 .divRightBankApp {
 	margin: 42px 0 !important;
+	padding-left: 50px;
+	width: 42%;
 }
 
 .payreqexp preimg {
@@ -453,10 +455,6 @@ h4 {
 .divRightBankApp h2 {
 	font-size: 24px;
 	margin-bottom: 72px
-}
-
-.divRightBankApp {
-	padding-left: 50px
 }
 
 .dark .divRightBankApp {
@@ -662,9 +660,10 @@ and (orientation: portrait) {
 .divTopBankApp {
     	display: none;
 	}
-	
+
 @media only screen and (min-device-width : 768px) 
-and (max-device-width : 1024px)  {
+and (max-device-width : 1024px) and (orientation : landscape) and
+ (-webkit-min-device-pixel-ratio: 2)   {
 	
 	.content .payreqexp h4 {
     	margin-bottom: 30px;
@@ -831,10 +830,11 @@ and (max-device-width : 1024px)  {
 		font-size: 23px;
 	}
 }
-
-@media  (min-device-width: 800px) 
-  and (max-device-width: 1280px) {
 	
+@media (min-device-width : 768px) 
+and (max-device-width : 1024px) and not (-webkit-min-device-pixel-ratio: 2)  {
+	
+	.notificationPopUp .whtPbbaDiv {text-align:center; font-size: 12px; margin-bottom: 20px;}
 	.content .payreqexp h4 {
     	margin-bottom: 30px;
 	}
@@ -844,15 +844,18 @@ and (max-device-width : 1024px)  {
     	line-height: 24px;
 	}
 
+	/* #page:not(.dark) {
+		height: 410px;
+	} */
+	
+	
 	#page {
 		border: 3px solid #FF6E00;
 		border-radius: 5px;
 		width: 95%;
 	}
 	.divTopBankApp {
-		width: 100%;
-    	height: 100px;
-    	display: block;
+		display: none;
 	}
 
 	#left-column>div, #right-column>div {
@@ -882,7 +885,7 @@ and (max-device-width : 1024px)  {
 	
 	.divLeftBankApp {
 		padding: 0px; 
-	    margin: 0px !important;
+	    margin-top: 40px !important;
 	    line-height: 25px;
 	    height: auto;
 	    font-family: 'Source Sans Pro', sans-serif !important;
@@ -892,7 +895,7 @@ and (max-device-width : 1024px)  {
 	
 	.divRightBankApp {
 		padding: 0px; 
-	    margin: 0px !important;
+	    margin-top: 40px 0 !important;
 	    border: 0px;
 	    line-height: 25px;
 	    height: auto;
@@ -903,7 +906,7 @@ and (max-device-width : 1024px)  {
 	
 	.divLeftBankApp .steps {
     padding: 20px 0;
-    text-align: left;
+    text-align: center;
 }
 
 	.divLeftBankApp > div:FIRST-CHILD {
@@ -915,9 +918,10 @@ and (max-device-width : 1024px)  {
 	
 	#left-column .content {
 
+	  /*  border-bottom: solid 2px #E0E0E0; */
 	   margin-left: auto;
 	    margin-right: auto;
-	    width: 50% !important;
+	   
 	}
 	
 	#left-columns {
@@ -952,7 +956,7 @@ and (max-device-width : 1024px)  {
     color: black;
     margin-bottom: 20px;
     margin-top: 10px;
-    text-align: center;
+    margin-left: 23px;
 }
 
 .divLeftBankApp h2 {
@@ -980,7 +984,181 @@ and (max-device-width : 1024px)  {
 	.getCodeImg	{ 
 		vertical-align: middle;
 		margin-left: 0px;
-		width:14px;
+		width:auto;
+	}
+	
+	.text-left a {
+	text-align: center;
+	}
+	
+	.divLeftBankApp img {
+    width: auto;
+    top: 0;
+    position: relative;
+    margin-bottom: 0px;
+	}
+	
+	.divTopBankApp h2 {
+		color: black;
+		font-size: 23px;
+	}
+}
+
+@media  (min-device-width: 800px) 
+  and (max-device-width: 1280px) {
+	
+	.notificationPopUp .whtPbbaDiv {text-align:center; font-size: 12px; margin-bottom: 20px;}
+	
+	.content .payreqexp h4 {
+    	margin-bottom: 30px;
+	}
+
+	.content .codegenfail h4 {
+    	margin-bottom: 20px;
+    	line-height: 24px;
+	}
+
+	#page {
+		border: 3px solid #FF6E00;
+		border-radius: 5px;
+		width: 95%;
+
+	}
+	
+	/* #page:not(.dark) {
+		height: 410px;
+	} */
+	
+	.divTopBankApp {
+		display: none;
+	}
+
+	#left-column>div, #right-column>div {
+		padding: 0px 0px 0px 0px !important;
+		height: auto;
+		widht: 100%;
+		
+	}
+	#brn {
+	    margin-top: 0px;
+    	margin-bottom: 20px;
+    	float:left;
+	}
+	
+	#tell-me-more a {
+		font-size: 13px;
+		line-height: 13px;
+		text-align: center;
+		display: block;
+		color: black;
+		margin-top: 20px;
+	}
+	
+	hr {
+		margin: 10px 0;
+	}
+	
+	.divLeftBankApp {
+		padding: 0px; 
+	    margin-top: 40px !important;
+	    line-height: 25px;
+	    height: auto;
+	    font-family: 'Source Sans Pro', sans-serif !important;
+	     width: 50%;
+	     height: 250px;
+	}
+	
+	.divRightBankApp {
+		padding: 0px; 
+	    margin-top: 40px !important;
+	    border: 0px;
+	    line-height: 25px;
+	    height: auto;
+	    font-family: 'Source Sans Pro', sans-serif !important;
+	    text-align: left;
+	    width: 49%;
+	}
+	
+	.divLeftBankApp .steps {
+    padding: 20px 0;
+    text-align: center;
+}
+
+	.divLeftBankApp > div:FIRST-CHILD {
+	   width: 100%;
+	   margin-left: auto;
+	   margin-right: auto;
+       text-align: left;
+	}
+	
+	#left-column .content {
+
+	   margin-left: auto;
+	    margin-right: auto;
+	   
+	}
+	
+	#left-columns {
+		width: 50%;
+	}
+	
+	#right-column .content {
+
+	   margin-left: auto;
+	    margin-right: auto;
+	    width: 90%;
+	}
+	
+	.divRightBankApp h4 {
+	padding: 0;
+	font-size: 14px;
+	line-height: normal;
+	color: black;
+	width:90%;
+}
+
+.divLeftBankApp h4 {
+	padding: 0;
+	font-size: 14px;
+	line-height: normal;
+	color: black;
+	width:90%;
+}
+
+.divRightBankApp h2 {
+    font-size: 17px;
+    color: black;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-left: 23px;
+}
+
+.divLeftBankApp h2 {
+    font-size: 17px;
+    color: black;
+    margin-top: 0px;
+    text-align: center;
+}
+
+	.button{
+	    border: none;
+	    background: #ff6e00;
+	    color: white !important;
+	    margin: 0;
+	    padding: 5px;
+	    display: inline-block;
+	    font-size: 1em;
+	    font-weight: bold;
+	    line-height: 27px;
+	    width: 200px;
+    	height: 27px;
+    	border-radius: 3px;
+	}
+	
+	.getCodeImg	{ 
+		vertical-align: middle;
+		margin-left: 0px;
+		width:auto;
 	}
 	
 	.text-left a {
@@ -1001,265 +1179,6 @@ and (max-device-width : 1024px)  {
 }
 
 
-
-/* @media only screen and (device-width : 1024px) and (orientation : portrait) {
-	
-	#page {
-		border: 3px solid #FF6E00;
-		border-radius: 5px;
-		width: 95%;
-	}
-
-	#left-column>div, #right-column>div {
-		padding: 0px 0px 0px 0px !important;
-		height: auto;
-		widht: 100%;
-		
-	}
-	#brn {
-	    margin-top: 0px;
-    	margin-bottom: 20px;
-    	float:left;
-	}
-	
-	#tell-me-more a {
-		font-size: 13px;
-		line-height: 13px;
-		text-align: center;
-		display: block;
-		color: #666;
-		margin-top: 20px;
-	}
-	
-	hr {
-		margin: 10px 0;
-	}
-	
-	.divLeftBankApp {
-		padding: 0px; 
-	    margin: 0px !important;
-	    border: 0px;
-	    line-height: 25px;
-	    height: auto;
-	    font-family: 'Source Sans Pro', sans-serif !important;
-	}
-	
-	.divRightBankApp {
-		padding: 0px; 
-	    margin: 0px !important;
-	    border: 0px;
-	    line-height: 25px;
-	    height: auto;
-	    font-family: 'Source Sans Pro', sans-serif !important;
-	    text-align: center;
-	    width: 95%;
-	}
-	
-	.divLeftBankApp > div:FIRST-CHILD {
-	   width: 80%;
-	   border-bottom: solid 1px #E0E0E0;
-	   margin-left: auto;
-	   margin-right: auto;
-       text-align: center;
-	}
-	
-	#right-column .content {
-
-	   margin-left: auto;
-	    margin-right: auto;
-	    width: 80%;
-	}
-	
-	.divRightBankApp h4 {
-	padding: 0;
-	font-size: 14px;
-	line-height: normal;
-	color: black;
-	width:90%;
-}
-
-.divLeftBankApp h4 {
-	padding: 0;
-	font-size: 14px;
-	line-height: normal;
-	color: black;
-	width:90%;
-}
-
-.divRightBankApp h2 {
-    font-size: 17px;
-    color: black;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.divLeftBankApp h2 {
-    font-size: 17px;
-    color: black;
-    margin-top: 0px;
-    text-align: center;
-}
-
-	.button{
-	    border: none;
-	    background: #ff6e00;
-	    color: white !important;
-	    margin: 0;
-	    padding: 5px;
-	    display: inline-block;
-	    font-size: 17px;
-	    font-weight: bold;
-	    line-height: 27px;
-	    width: 200px;
-    	height: 27px;
-    	border-radius: 3px;
-	}
-	
-	.getCodeImg	{ 
-		vertical-align: middle;
-		margin-left: 0px;
-		width:14px;
-	}
-
-	.content .payreqexp h4 {
-    	margin-bottom: 30px;
-	}
-
-}
- */
- 
- /* @media only screen 
-and (min-device-width : 320px) 
-and (max-device-width : 568px)
-and (orientation: landscape),
-only screen 
-and (min-device-width: 375px) 
-and (max-device-width: 667px)
-and (orientation: landscape) {
-	
-	#page {
-		border: 3px solid #FF6E00;
-		border-radius: 5px;
-		width: 95%;
-	}
-
-	#left-column>div, #right-column>div {
-		padding: 0px 0px 0px 0px !important;
-		height: auto;
-		widht: 100%;
-		
-	}
-	#brn {
-	    margin-top: 0px;
-    	margin-bottom: 20px;
-    	float:left;
-	}
-	
-	#tell-me-more a {
-		font-size: 13px;
-		line-height: 13px;
-		text-align: center;
-		display: block;
-		color: #666;
-		margin-top: 20px;
-	}
-	
-	hr {
-		margin: 10px 0;
-	}
-	
-	.divLeftBankApp {
-		padding: 0px; 
-	    margin: 0px !important;
-	    border: 0px;
-	    line-height: 25px;
-	    height: auto;
-	    font-family: 'Source Sans Pro', sans-serif !important;
-	    width:50%;
-	}
-	
-	.divRightBankApp {
-		padding: 0px; 
-	    margin: 0px !important;
-	    border: 0px;
-	    line-height: 25px;
-	    height: auto;
-	    font-family: 'Source Sans Pro', sans-serif !important;
-	    text-align: center;
-	    width: 45%;
-	}
-	
-	.divLeftBankApp > div:FIRST-CHILD {
-	   width: 100%;
-	   border-right: solid 1px #E0E0E0;
-	   margin-left: auto;
-	   margin-right: auto;
-       text-align: center;
-	}
-	
-	#right-column .content {
-
-	   margin-left: auto;
-	    margin-right: auto;
-	    width: 40%;
-	}
-	
-	.divRightBankApp h4 {
-	padding: 0;
-	font-size: 14px;
-	line-height: normal;
-	color: black;
-	width:90%;
-}
-
-.divLeftBankApp h4 {
-	padding: 0;
-	font-size: 14px;
-	line-height: normal;
-	color: black;
-	width:90%;
-}
-
-.divRightBankApp h2 {
-    font-size: 17px;
-    color: black;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.divLeftBankApp h2 {
-    font-size: 17px;
-    color: black;
-    margin-top: 0px;
-    text-align: center;
-}
-
-	.button{
-	    border: none;
-	    background: #ff6e00;
-	    color: white !important;
-	    margin: 0;
-	    padding: 5px;
-	    display: inline-block;
-	    font-size: 17px;
-	    font-weight: bold;
-	    line-height: 27px;
-	    width: 200px;
-    	height: 27px;
-    	border-radius: 3px;
-	}
-	
-	.getCodeImg	{ 
-		vertical-align: middle;
-		margin-left: 0px;
-		width:14px;
-	}
-
-	.content .payreqexp h4 {
-    	margin-bottom: 30px;
-	}
-
-} */
 
  @media only screen 
 and (min-device-width : 320px) 

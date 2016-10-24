@@ -166,12 +166,18 @@ and (max-device-width : 1024px) {
 	    -moz-box-sizing: content-box;
 	    -webkit-box-sizing: content-box; display: block; float:none; margin: 0 auto;
 	     left: -3px !important;
-	    top: auto !important;
+	    top: 0;
 	    bottom: auto !important;
 	    right: auto !important;
 	    position: relative !important;
 	    padding: 0 !important;
-	}  
+	}
+
+	#zapp-popup.dark iframe
+	{
+		border-color: #FF6E00;
+		border-radius:10px; width:345px!important; height:300px!important
+	}
 }
 
 
@@ -245,12 +251,18 @@ and (max-device-width : 568px) {
 	    -moz-box-sizing: content-box;
 	    -webkit-box-sizing: content-box; display: block; float:none; margin: 0 auto;
 	     left: -3px !important;
-	    top: auto !important;
+	    top: 0;
 	    bottom: auto !important;
 	    right: auto !important;
 	    position: relative !important;
 	    padding: 0 !important;
-	}  
+	}
+
+	#zapp-popup.dark iframe
+	{
+		border-color: #FF6E00;
+		border-radius:10px; width:345px!important; height:300px!important
+	}
 }
 
 /* @media only screen and (device-width : 1024px) and (orientation : portrait)  {
@@ -281,7 +293,7 @@ and (max-device-width : 568px) {
     filter:alpha(opacity=50); /* IE */
     opacity: 0.5; /* Safari, Opera */
     -moz-opacity:0.50; /* FireFox */
-    z-index: 20;
+    z-index: 9998;
     height: 100%;
     width: 100%;
     background-repeat:no-repeat;

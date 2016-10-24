@@ -126,12 +126,16 @@ limitations under the License. */
        },
 	   registerEventHandler: function(name, fn)
        {
+		   if (typeof name == "undefined")
+	       		return;
            if (typeof zapppopup.events[name] === "undefined")
         	   zapppopup.events[name] = [];
            zapppopup.events[name].push(fn);
        },
        triggerEvent: function (name, args)
        {
+    	   if (typeof name == "undefined")
+       		return;
            if (typeof zapppopup.events[name] === "undefined")
                return;
            for (var idx = 0; idx < zapppopup.events[name].length; idx ++)
@@ -226,7 +230,17 @@ limitations under the License. */
             var horizontal = (buttonBoxSize.document.left > buttonBoxSize.document.right) ? 0 : 1;
 
             var destTop = 0;
-            var destLeft = -60;
+            var width = screen.width;
+			var height = screen.height;
+			var isLowerResolution = false;
+			var destLeft = -60;
+			 
+			if ((width == 1280) || 
+				(width == 1024)) {
+				isLowerResolution = true;
+				destLeft = -20;
+			}
+           
 
             var arrowHorizOffset = (buttonBoxSize.width - arrow.clientWidth) * 0.9;
 
@@ -237,7 +251,12 @@ limitations under the License. */
                 arrow.style.borderRightColor="#FF6E00";
                 arrow.style.borderTopColor="#FFFFFF";
                 arrow.style.borderLeftColor="#FFFFFF";
-                document.getElementById('pbba-popup-frame').style.top = "-6px";
+				if(isLowerResolution) {
+					document.getElementById('pbba-popup-frame').style.top = "-16px";
+				} else {
+					document.getElementById('pbba-popup-frame').style.top = "-6px";
+				}
+                
             }
             else
             {

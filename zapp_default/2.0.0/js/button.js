@@ -18,7 +18,7 @@ limitations under the License. */
 
     function removePopup(self) {
     	
-    	if (document.getElementById('cover') != "undefined")
+    	if (document.getElementById('cover') != "undefined" && document.getElementById('cover') != null)
     		document.getElementById('cover').remove();
     	
     	self._finish();
@@ -50,12 +50,16 @@ limitations under the License. */
         },
         registerEventHandler: function(name, fn)
         {
+        	if (typeof name == "undefined")
+	       		return;
             if (typeof zapp.events[name] === "undefined")
                 zapp.events[name] = [];
             zapp.events[name].push(fn);
         },
         triggerEvent: function (name, args)
         {
+        	if (typeof name == "undefined")
+        		return;
             if (typeof zapp.events[name] === "undefined")
                 return;
             for (var idx = 0; idx < zapp.events[name].length; idx ++)
@@ -349,6 +353,9 @@ limitations under the License. */
                     }
                     else
                     {
+                    	if (response.errorCode != 12) {
+                    	//	self._notify(response);
+                    	}
                     	//removePopup(self);
                     }
                 });

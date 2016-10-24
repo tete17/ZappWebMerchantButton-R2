@@ -21,7 +21,6 @@ window.zapppopup = window.zapppopup || {};
     zapp._readyCallbacks = [];
     zapp._readyCallback = false;
     zapppopup._readyCallbacks = [];
-    zapppopup._readyCallback = false;
 
     if (!zapp.registerEventHandler)
     {
@@ -281,15 +280,6 @@ window.zapppopup = window.zapppopup || {};
         document.body.appendChild(ele);
         
     };
-    
-    zapppopup.isCookieEnabled = function(){
-        var cookieEnabled=(navigator.cookieEnabled)? true : false;
-        if (typeof navigator.cookieEnabled=="undefined" && !cookieEnabled){ 
-            document.cookie="testcookie";
-            cookieEnabled=(document.cookie.indexOf("testcookie")!=-1)? true : false;
-        }
-        return (cookieEnabled) ? true : false;
-    }
     
     zapppopup.removeAppCookie =  function(cookieManagementUrl)
     {

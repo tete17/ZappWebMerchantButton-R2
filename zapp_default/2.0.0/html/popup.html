@@ -55,7 +55,7 @@ limitations under the License. -->
             var nContent2 = '<div class="notiLeftCol"><img class="notiLeftImg" src="../images/icon_payconnect.png"></div>';
             var nContent3 = '<div class="notiLeftCol"><ul class="noteList"><li><span class="lblNotiPick" ></span><strong>Pick</strong> up your phone or tablet</li>'+
             				'<li><span class="lblNotiOpen" ></span><strong>Open</strong> the notification from CFI</li>'+
-            				'<li><span class="lblNotiLogin" ></span> <p class="noteLastContent"><strong>Log in</strong> to your mobile baking app to complete <br/>your purchase</p></li>'+
+            				'<li><span class="lblNotiLogin" ></span> <p class="noteLastContent"><strong>Log in</strong> to your mobile banking app to complete <br/>your purchase</p></li>'+
             				'</ul></div>';
             var nContent4 = '<hr><div class="notiNotSent"><div class="notiNotSentTxt fl">'+
             				'<p><strong>No notification?</strong> </p><p> Didn\'t receive a notification or want to '+
@@ -103,8 +103,8 @@ limitations under the License. -->
                 pbbahowstep4:'<span class="lblEnter"></span><strong>Enter</strong> the <img src="../images/icon_code.png" width="40px" class="imgCode"> below',
                 pbbahowstep5:'BRN',
                 pbbamoreabout:'<a href="http://www.paybybankapp.co.uk/how-it-works/the-experience/" target="_blank">What is Pay by Bank app? <img class="whtPbbaImg" src="../images/icon_whatispbba.png"/></a>',
-                pbbapayreqexpired:'<div class="payreqexp"><img class="preimg" src="../images/icon_error.png"/><h2>Payment request expired</h2><h4>Tap on the button below to try again.</h4><div class="clrimg"></div><a id="pbbaBtnInfo" class="pbbaBtnInfo" href="#" onclick="newRequest()"><img src="../images/button_pbba.png" alt=""/></a></div>',
-                pbbapaycodegenfail:'<div class="codegenfail"><img class ="iconErrCodeFail" src="../images/icon_error.png" /><h2>There has been a problem</h2><h4>We were unable to generate a<br/> payment request at this time. Tap on<br/> the button below to try again.</h4><div class="btnSet"><a id="pbbaBtnInfo" class="pbbaBtnInfo" href="#" onclick="newRequest()"><img src="../images/button_pbba.png" alt=""/></a></div></div>',
+                pbbapayreqexpired:'<div class="payreqexp"><img class="preimg" src="../images/icon_error.png"/><h2>Payment request expired</h2><h4>Tap on the button below to try again.</h4><div class="clrimg"></div><div class="btnSet"><a id="pbbaBtnInfo" class="pbbaBtnInfo" href="#" onclick="newRequest()"><img style="height:100%; width:100%" src="../images/button_pbba.png" alt=""/></a></div></div>',
+                pbbapaycodegenfail:'<div class="codegenfail"><img class ="iconErrCodeFail" src="../images/icon_error.png" /><h2>There has been a problem</h2><h4>We were unable to generate a<br/> payment request at this time. Tap on<br/> the button below to try again.</h4><div class="btnSet"><a id="pbbaBtnInfo" class="pbbaBtnInfo" href="#" onclick="newRequest()"><img style="height:100%; width:100%" src="../images/button_pbba.png" alt=""/></a></div></div>',
                 pbbanotification : 'NOTIFICATION_CONTENT',
                 payByBankApp : '<div style="margin-left: 37%;width: 100%;margin-top: 9px;"><div style="float: left;margin-right: 10px;margin-top: 26px;"><img width="20px" src="../images/squiggle.png" /></div><div style="float:left;"><h2>Pay by Bank app</h2></div></div>'
             };
@@ -453,21 +453,25 @@ limitations under the License. -->
 
             function closePopup()
             {
-            	try {
-            		var isIE = (navigator.userAgent.indexOf("MSIE") != -1);
-            		if (isIE) {
-            			elem=window.parent.document.getElementById('cover').parentNode.removeChild(window.parent.document.getElementById('cover'));
-            		} else {
-            			window.parent.document.getElementById('cover').remove();
-            		}
-            			
-            	} catch (e) {
-            		
+            	var answer = confirm('Are You Sure?\nThis may cancel your order.');
+            	if (answer) {
+            		try {
+                		var isIE = (navigator.userAgent.indexOf("MSIE") != -1);
+                		if (isIE) {
+                			elem=window.parent.document.getElementById('cover').parentNode.removeChild(window.parent.document.getElementById('cover'));
+                		} else {
+                			window.parent.document.getElementById('cover').remove();
+                		}
+                			
+                	} catch (e) {
+                		
+                	}
+                	if (typeof window.id != "undefined" && window.id.toString() != "CUSTOM")
+                    	sendEvent('com.zapp.popup.close', window.id, []);
+                	else
+                		window.parent.document.getElementById('zapp-popup').remove();
             	}
-            	if (typeof window.id != "undefined" && window.id.toString() != "CUSTOM")
-                	sendEvent('com.zapp.popup.close', window.id, []);
-            	else
-            		window.parent.document.getElementById('zapp-popup').remove();
+            	
             }
 
             function sendEvent(type, id, data)

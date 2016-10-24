@@ -295,12 +295,13 @@ limitations under the License. -->
 
                 
                 button.onclick = function() {
-
+                	
                     if (button.getAttribute("class").indexOf("loading") == -1){
                     	if(imageKey == 1){
                     		button.setAttribute("class", button.getAttribute("class") + " loading");
                     	}
                     }
+                    window.parent.postMessage("read-pbba-cookies", "*");
                     var postData = {
                         iframeID: zapppopup.getParameterByName('id'),
                         id: zapppopup.getParameterByName('id'),

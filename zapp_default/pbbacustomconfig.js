@@ -89,7 +89,7 @@ zapp.load(zappVersion, {
 		 *	2.	secureToken must be passed to the merchant server to enable polling the zapp server for a 
 		 *		payment notification.
 		 *
-		 *	3.	SUCCESSFUL RESPONSE - Upon receipt of a successful response from the merchant server:
+		 *	3.	SUCCESSFUL RESPONSE - Upon receipt of a successful response from the distroibutor server:
 		 *
 		 *		A.	Create a new response object by populating the following fields:
 		 *
@@ -109,26 +109,37 @@ zapp.load(zappVersion, {
 		 *
 		 *		D. Continue further order processing.
 		 *
-		 *	4.	ERROR - Upon receipt of an error from the merchant server:
+		 *	4.	IN PROGRESS - Upon receipt of an IN PROGRESS status from the distributor server:
 		 *		
 		 *		A.	Create a new response object by populating the following fields:
 		 *
 		 *			var response = new zapppopup.response.notify({
 						success : false,
-						data : <response from the merchant server converted to JSON format>
+						errorCode : 12
 					});
 		 *
 		 *		B.	Make a callback passing in the response object created in Step A above:
 		 *
 		 *			callback(response);
 		 *
-		 *		C. Continue further order processing.
+		 *	5.  ERROR - Upon receipt of an error from the merchant server:
+		 *		
+		 *		A.	Create a new response object by populating the following fields:
+		 *
+		 *			var response = new zapppopup.response.notify({
+						success : false
+					});
+		 *		B.	Make a callback passing in the response object created in Step A above:
+		 *
+		 *			callback(response);
+		 *
+		 *		C.   Merchant implements their own Error Handling process
 		 *
 		 */
 
 	},
 	error : function(errors) {
-		/* Place any error handling logic here */
+		/* Place any other error handling logic here */
 	},
 	cookieManagementUrl: cookieManagementUrl,
 	imageKey: imageKey,
