@@ -168,6 +168,7 @@ limitations under the License. -->
                 }
             }
 
+            if (typeof zapppopup != "undefined")
             zapppopup.documentReady(function() {
 
             	newImgSrc = zapp.getParameterByName('src');
@@ -453,10 +454,10 @@ limitations under the License. -->
 
             function closePopup()
             {
-            	var answer = confirm('Are You Sure?\nThis may cancel your order.');
+            	var answer = confirm("Are you sure?\n\nSelect OK to choose another payment option\nSelect Cancel if you have already Paid by Bank app via Pingit");
             	if (answer) {
             		try {
-                		var isIE = (navigator.userAgent.indexOf("MSIE") != -1);
+                		var isIE = (navigator.userAgent.indexOf("MSIE") != -1) || (navigator.userAgent.indexOf("Trident") != -1);
                 		if (isIE) {
                 			elem=window.parent.document.getElementById('cover').parentNode.removeChild(window.parent.document.getElementById('cover'));
                 		} else {
@@ -464,7 +465,7 @@ limitations under the License. -->
                 		}
                 			
                 	} catch (e) {
-                		
+                		elem=window.parent.document.getElementById('cover').parentNode.removeChild(window.parent.document.getElementById('cover'));
                 	}
                 	if (typeof window.id != "undefined" && window.id.toString() != "CUSTOM")
                     	sendEvent('com.zapp.popup.close', window.id, []);

@@ -15,7 +15,7 @@ limitations under the License. */
 
 window.zapp = window.zapp || {};
 window.zapppopup = window.zapppopup || {};
-
+var TP_COOKIE_DISABLED_COOKIE = "TPCookieDisabled";
 (function() {
 
     zapp._readyCallbacks = [];
@@ -68,28 +68,37 @@ window.zapppopup = window.zapppopup || {};
      */
     zapp.documentReady = function(callback)
     {
-        zapp._readyCallbacks.push(callback);
-        if (zapp._readyCallback)
-            return;
-        document.onreadystatechange = function() {
-            if (document.readyState === "complete")
-                for (var i = 0; i < zapp._readyCallbacks.length; i ++)
-                    zapp._readyCallbacks[i]();
-        };
-        zapp._readyCallback = true;
+        try { 
+        	zapp._readyCallbacks.push(callback);
+        	if (zapp._readyCallback)
+                return;
+            document.onreadystatechange = function() {
+                if (document.readyState === "complete")
+                    for (var i = 0; i < zapp._readyCallbacks.length; i ++)
+                        zapp._readyCallbacks[i]();
+            };
+            zapp._readyCallback = true;
+        } catch (err) {
+        	return;
+        }
+        
     };
     
     zapppopup.documentReady = function(callback)
     {
-    	zapppopup._readyCallbacks.push(callback);
-        if (zapppopup._readyCallback)
-            return;
-        document.onreadystatechange = function() {
-            if (document.readyState === "complete")
-                for (var i = 0; i < zapppopup._readyCallbacks.length; i ++)
-                	zapppopup._readyCallbacks[i]();
-        };
-        zapppopup._readyCallback = true;
+    	try {  	
+	    	zapppopup._readyCallbacks.push(callback);
+	        if (zapppopup._readyCallback)
+	            return;
+	        document.onreadystatechange = function() {
+	            if (document.readyState === "complete")
+	                for (var i = 0; i < zapppopup._readyCallbacks.length; i ++)
+	                	zapppopup._readyCallbacks[i]();
+	        };
+	        zapppopup._readyCallback = true;
+    	} catch (err) {
+    		return;
+    	}
     };
 
     /**
@@ -114,13 +123,13 @@ window.zapppopup = window.zapppopup || {};
 
             if (!events[data.eventType])
             {
-                alert("Unhandled Event : " + data.eventType);
+                //alert("Unhandled Event : " + data.eventType);
                 return;
             }
 
             if (typeof events[data.eventType] !== "function")
             {
-                alert("Event handler for " + data.eventType + " is not a function");
+                //alert("Event handler for " + data.eventType + " is not a function");
                 return;
             }
 
@@ -254,30 +263,87 @@ window.zapppopup = window.zapppopup || {};
      */
     zapppopup.getParameterByName = zapp.getParameterByName = function(name)
     {
-        name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
-        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        try{
+        	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+        	var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
             results = regex.exec(location.search);
-        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        	return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        } catch (err) {
+        	return;
+        }
+        
     };
 
-    zapppopup.setAppCookie =  function(cookieManagementUrl)
-    {
-        var ele = document.getElementById("zappAction");
+    zapppopup.deleteCookie = function(name) {
+    	
+    	document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/';
+    }
+    
+    zapppopup.cookieExists = function(cookie) {
+    	return (document.cookie.indexOf(cookie) != -1 ) ? true : false;
+    };
+
+    zapppopup.isTPCookieDisabled = function() {
+    	return zapppopup.cookieExists(TP_COOKIE_DISABLED_COOKIE);
+    };
+    
+    zapppopup.redirectToCookieManagementUrl = function(url) {
+    	
+    	var xmlhttp = new XMLHttpRequest();
+    	
+		if (xmlhttp.withCredentials === undefined) {
+			xmlhttp = new XDomainRequest();
+		}
+		
+	    xmlhttp.onreadystatechange = function() {
+	        if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
+	           if (xmlhttp.status == 200) {
+	        	   console.log(url+" is reachable.");
+	        	   setTimeout(function(){
+	           			window.location.href = url +  "cookie-management/index.html";
+	           		}, 10);
+	        	   zapppopup.deleteCookie(TP_COOKIE_DISABLED_COOKIE);
+	           }
+	        }
+	    };
+	
+	    xmlhttp.open("HEAD", url +  "cookie-management/index.html", true);
+	    xmlhttp.send();
+    };
+    
+    
+    zapppopup.setHasAppCookie = function(cookieManagementUrl) {
+    	
+    	var ele = document.getElementById("zappAction");
         if (!ele)
         {
             ele = document.createElement("iframe");
             ele.id = "zappAction";
         }
-        if (typeof zapp != "undefined"  && typeof zapp.options != undefined)
+        if (typeof zapp != "undefined" && typeof zapp.options != "undefined")
         	ele.setAttribute("src", zapp.options.cookieManagementUrl + "cookie-management/set-app-cookie.html");
-        else if (typeof zapppopup != "undefined" && typeof zapppopup.options != undefined)
+        else if (typeof zapppopup != "undefined" && typeof zapppopup.options != "undefined")
         	ele.setAttribute("src", zapppopup.options.cookieManagementUrl + "cookie-management/set-app-cookie.html");
         else if (cookieManagementUrl != null && cookieManagementUrl != "")
         	ele.setAttribute("src", cookieManagementUrl + "cookie-management/set-app-cookie.html");
-        else
-        	alert("Cannot set app cookie!");
+        //else
+        	//alert("Cannot set app cookie!");
         
         document.body.appendChild(ele);
+        
+    };
+    
+    zapppopup.setAppCookie =  function(cookieManagementUrl)
+    {
+    	if (zapppopup.isTPCookieDisabled()) {
+    		zapppopup.redirectToCookieManagementUrl(cookieManagementUrl);
+    		setTimeout(function(){
+    			zapppopup.setHasAppCookie(cookieManagementUrl);
+    		},1000);
+		} else {
+			zapppopup.setHasAppCookie(cookieManagementUrl);
+		}
+        
         
     };
     
@@ -289,14 +355,14 @@ window.zapppopup = window.zapppopup || {};
             ele = document.createElement("iframe");
             ele.id = "zappAction";
         }
-        if (typeof zapp != "undefined"  && typeof zapp.options != undefined)
-        	ele.setAttribute("src", zapppopup.options.cookieManagementUrl + "cookie-management/remove-app-cookie.html");
-        else if (typeof zapppopup != "undefined" && typeof zapppopup.options != undefined)
+        if (typeof zapp != "undefined" && typeof zapp.options != "undefined")
         	ele.setAttribute("src", zapp.options.cookieManagementUrl + "cookie-management/remove-app-cookie.html");
+        else if (typeof zapppopup != "undefined" && typeof zapppopup.options != "undefined")
+        	ele.setAttribute("src", zapppopup.options.cookieManagementUrl + "cookie-management/remove-app-cookie.html");
         else if (cookieManagementUrl != null && cookieManagementUrl != "")
         	ele.setAttribute("src", cookieManagementUrl + "cookie-management/remove-app-cookie.html");
-        else
-        	alert("Cannot set app cookie!");
+        //else
+        	//alert("Cannot remove app cookie!");
         
         document.body.appendChild(ele);
         

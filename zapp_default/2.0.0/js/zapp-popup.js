@@ -176,9 +176,10 @@ limitations under the License. */
             if (zapppopup._popup != null)
                 return zapppopup._popup;
             zapppopup._popup = new zapppopup.popup(ele.id);
-            if (zapppopup.isMobile1())
+            if (zapppopup.isMobile1()) {
+				zapppopup._popup.ele.style.display = "none";
                 document.body.appendChild(zapppopup._popup.ele);
-            else {
+			} else {
 	            	if (ele.ele) 
 	            		ele.ele.appendChild(zapppopup._popup.ele);
 	            	else
@@ -444,6 +445,80 @@ limitations under the License. */
 
                 zapppopup._popup.sendMessage(self, "com.zapp.popup.state", "noBankApp");
 
+            };
+
+            if (navigator.userAgent.match(/Android/))
+            {
+                // Older Android browser
+                var iframe = document.createElement("iframe");
+                iframe.style.border = "none";
+                iframe.style.width = "1px";
+                iframe.style.height = "1px";
+                var t = setTimeout(function()
+                {
+                    isInstalledCallback(document.webkitHidden);
+                }, 1000);
+                iframe.onload = function()
+                {
+                    clearTimeout(t);
+                };
+                iframe.src = url;
+                document.body.appendChild(iframe);
+
+            }
+            else// if (navigator.userAgent.match(/iPhone|iPad|iPod/))
+            {
+                // IOS
+                setTimeout(function() {
+                    if (!document.webkitHidden) {
+                        isInstalledCallback(false); //noInstalled
+                    } else {
+                        isInstalledCallback(true);
+                    }
+                }, 3000);
+
+                window.location = url;
+            }
+
+            return this;
+        },
+        _invokeAppWithResponse: function(btn, response)
+        {
+
+        	var self = btn;
+        	
+            var url = null;
+
+            if (typeof zapppopup.customMode == "undefined")
+            {
+            	
+                url = "zapp://" + this.secureToken;
+            }
+            else {
+                url = "zapp://"+ this.secureToken;
+            }
+
+            
+
+            var isInstalledCallback = function(isInstalled) {
+
+                var isiOS = navigator.userAgent.match(/iPhone|iPod|iPad/),
+                    isAndroid = navigator.userAgent.match(/Android/);
+                var androidUrl = 'https://play.google.com/',
+                    iosAppUrl = 'itms-apps://itunes.apple.com/app/my-app/';
+                if (isInstalled)
+                {
+                    return;
+                }
+
+                if (typeof zapppopup.customMode == "undefined" && zapp.hasApp)
+                {
+                	 zapppopup.removeAppCookie();
+                } else if (typeof zapp == "undefined" && zapppopup.getCookie("hasApp")) {
+                	zapppopup.removeAppCookie();
+                }
+
+                zapppopup._addPopup(self).sendMessage(self, "com.zapp.popup.data", response);
             };
 
             if (navigator.userAgent.match(/Android/))

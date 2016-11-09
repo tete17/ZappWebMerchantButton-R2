@@ -38,11 +38,11 @@ zapppopup.documentReady(function() {
                 	var merchantRTPUrl = "zzzz" + "xxxx" + "/" + "transaction/";
 		
                     var callback = decodeURIComponent(merchantRTPUrl);
-                    var cookieManagementUrl = "http://www.retailmine.co.uk/";
+                    var cookieManagementUrl = "https://www.paybybankapp.co.uk/";
                     
                     zapppopup.setAppCookie(cookieManagementUrl);
                     
-                    var secureToken = zapppopup.getParameterByName("secureToken");
+                    var secureToken = zapppopup.getParameterByName("aptrId");
                     var status = zapppopup.getParameterByName("status");
 					
                     if (status == null || status.length == '')

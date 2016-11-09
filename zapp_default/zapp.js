@@ -188,31 +188,6 @@ function isCookieEnabled(){
     return (cookieEnabled) ? true : false;
 }
 
-function isURLWorking(url) {
-	var isWorking = false;
-	$.ajax({url: url,
-        type: "HEAD",
-		async: false,
-        timeout:1000,
-        statusCode: {
-            200: function (response) {
-				console.log('200')
-                isWorking = true;
-            },
-            400: function (response) {
-                isWorking = false;
-            },
-            404: function (response) {
-                isWorking = false;
-            },
-            0: function (response) {
-                isWorking = false;
-            }              
-        }
- });
- return isWorking;
-}
-
 function refreshPcidIframe(url) {
 	var iframe = document.getElementById('pcid-iframe');
 	if (typeof iframe != 'undefined' && iframe != null) {
@@ -233,12 +208,12 @@ function isTPCookieDisabled() {
 
 function deleteCookie(name) {
 	
-	document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+	document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/';
 }
 
 function createCookie(name) {
 	
-	document.cookie = name + '=;';
+	document.cookie = name + '=;path=/';
 }
 function createPcidIframe(url, document) {
 	if (isTPCookieDisabled()) {
@@ -273,14 +248,28 @@ function setupPayConnect(url, document) {
 
 function redirectToCookieManagementUrl(url, pcid, cookieExpiryDays) {
 	
-	if (!isURLWorking(url +  "cookie-management/index.html")) {
-		return;
+	var xmlhttp = new XMLHttpRequest();
+	
+	if (xmlhttp.withCredentials === undefined) {
+		xmlhttp = new XDomainRequest();
 	}
 	
-	setTimeout(function(){
-		window.location.href = url +  "cookie-management/index.html?pcid="+pcid+"&cookieExpiryDays="+cookieExpiryDays;
-	}, 10);
-	deleteCookie(TP_COOKIE_DISABLED_COOKIE);
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
+           if (xmlhttp.status == 200) {
+        	   console.log(url + " is reachable.");
+        	   setTimeout(function(){
+           			window.location.href = url +  "cookie-management/index.html?pcid="+pcid+"&cookieExpiryDays="+cookieExpiryDays;
+           		}, 10);
+           		deleteCookie(TP_COOKIE_DISABLED_COOKIE);     
+           } else {
+        	   console.log(url + " is not reachable");
+           }
+        }
+    };
+    
+    xmlhttp.open("HEAD", url +  "cookie-management/index.html", true);
+    xmlhttp.send();
 	
 }
 
@@ -288,6 +277,9 @@ function redirectToCookieManagementUrl(url, pcid, cookieExpiryDays) {
 
 function listener(event){
 
+	if (typeof event.data.indexOf == "undefined") {
+		return;
+	} 
 	
 	if (event.data.indexOf("read-pbba-cookies") == 0) {
 	    readPBBACookies();
@@ -308,11 +300,17 @@ function listener(event){
 	}
 	
 	if (event.data.indexOf(HAS_APP_COOKIE) == 0) {
-	    document.cookie = "hasApp=" + event.data.split('=')[1]  + '; path=/';
+		if (typeof event.data.split('=')[1] != "undefined") {
+			document.cookie = "hasApp=" + event.data.split('=')[1]  + '; path=/';
+		} else {
+			deleteCookie("hasApp");
+		}
+	    
 	}
 	
 	if (event.data.indexOf(PCID_COOKIE) == 0) {
-	    document.cookie = "pcid=" + event.data.split('=')[1]  + '; path=/';
+		if (event.data.split('=')[1] != "dummy")
+			document.cookie = "pcid=" + event.data.split('=')[1]  + '; path=/';
 	}
 	
 	

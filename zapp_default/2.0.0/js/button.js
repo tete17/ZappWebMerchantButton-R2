@@ -18,8 +18,14 @@ limitations under the License. */
 
     function removePopup(self) {
     	
-    	if (document.getElementById('cover') != "undefined" && document.getElementById('cover') != null)
-    		document.getElementById('cover').remove();
+    	if (document.getElementById('cover') != "undefined" && document.getElementById('cover') != null) {
+    		try {
+    			document.getElementById('cover').remove();
+    		} catch (e) {
+    			document.getElementById('cover').parentNode.removeChild(window.parent.document.getElementById('cover'));
+    		}
+    	}
+    		
     	
     	self._finish();
     }
@@ -65,11 +71,34 @@ limitations under the License. */
             for (var idx = 0; idx < zapp.events[name].length; idx ++)
                 zapp.events[name][idx](args);
         },
+        _isIE: function()
+        {
+        		var ieFlag = false;
+        	    var userAgent = window.navigator.userAgent;
+
+        	    var msie = userAgent.indexOf('MSIE ');
+        	    if (msie > 0) {
+        	        ieFlag = true;
+        	    }
+
+        	    var trident = userAgent.indexOf('Trident/');
+        	    if (trident > 0) {
+        	        ieFlag = true;
+        	    }
+
+        	    var edge = userAgent.indexOf('Edge/');
+        	    if (edge > 0) {
+        	       ieFlag = true;
+        	    }
+
+        	    return ieFlag;
+        },
         _init: function()
         {
 
            var self = this;
-
+           var loadInterval = self._isIE() ? 300 : 50;
+           
         	zapp.addJsFile(this.libUrl + "/js/extras.js");
             zapp.addJsFile(this.libUrl + "/js/zapp-popup.js");
             zapp.addJsFile(this.libUrl + "/js/cookie-management.js");
@@ -106,7 +135,7 @@ limitations under the License. */
 
                 setTimeout(function() {
                 	self._setupButtons();
-                }, 50);
+                }, loadInterval);
             })
         },
         _getButtonWithId: function(id)
@@ -253,6 +282,8 @@ limitations under the License. */
 
             this.options.pcid = zapp.pcid;
 
+            delete self.options.transaction;
+            
             zapp.options.pay(this.options, function(response) {
 
                 // Was transaction request cancelled?
@@ -263,7 +294,7 @@ limitations under the License. */
 
                 if (!response instanceof zapppopup.response.payment)
                 {
-                    alert("error pay method expects return type of zapp.response.payment");
+                    //alert("error pay method expects return type of zapp.response.payment");
                     return false;
                 }
 
@@ -284,7 +315,7 @@ limitations under the License. */
                 
                 if (zapp.hasApp)
                 {
-                	zapppopup._invokeApp(self);
+                	zapppopup._invokeAppWithResponse(self, response);
                 	 if (zapp.options.notify)
                      {
                          self._startNotification();

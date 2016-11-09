@@ -57,7 +57,8 @@ limitations under the License. -->
                 top: 0;
                 text-align: center;
                 /* overflow: hidden; */
-                overflow: hidden; background-color: #FF6E00
+                overflow: hidden;
+                opacity: 0; 
             }
             #pbbaSpan
             {
@@ -100,12 +101,12 @@ limitations under the License. -->
 
             #payByZapp.default div.left
             {
-                background-color: #FF6E00;
                 /* background-image: url(button-background-left.png); */
                 background-position: right center;
                 background-size: auto 100%;
                 background-repeat: no-repeat;
                 border-radius: 5px;
+                opacity: 0;
             }
 
             #payByZapp.custom div.left,
@@ -202,7 +203,7 @@ limitations under the License. -->
                     }
                     default:
                     {
-                        alert('Unknown : ' + data.eventType);
+                        //alert('Unknown : ' + data.eventType);
                     }
                 }
 
@@ -274,7 +275,10 @@ limitations under the License. -->
 	                	default: break;
                 	}
                 	/* left.style.setProperty("background-color", "transparent"); */
+                } else {
+                	left.style.setProperty("background-color", "#FF6E00");
                 }
+                left.style.setProperty("opacity", "1");
                 var cornerRadius = zapp.getParameterByName('cornerRadius');
                 if ((cornerRadius != "undefined" && cornerRadius != "") || (cornerRadius != "" && cornerRadius == 0))
                     style.push("border-radius: " + cornerRadius + "px");

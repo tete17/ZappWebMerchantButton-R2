@@ -1004,6 +1004,20 @@ and (max-device-width : 1024px) and not (-webkit-min-device-pixel-ratio: 2)  {
 	}
 }
 
+/* Samsung Galaxy Tab 3 */
+@media only screen 
+and (min-device-width: 800px) 
+and (max-device-height: 1280px) 
+and (orientation:landscape) {
+
+.divTopBankApp {
+    height: 100px;
+    width: 100%;
+}
+
+}
+
+/* 1280 X 800 resolution */
 @media  (min-device-width: 800px) 
   and (max-device-width: 1280px) {
 	
