@@ -55,7 +55,7 @@ limitations under the License. -->
             var nContent2 = '<div class="notiLeftCol"><img class="notiLeftImg" src="../images/icon_payconnect.png"></div>';
             var nContent3 = '<div class="notiLeftCol"><ul class="noteList"><li><span class="lblNotiPick" ></span><strong>Pick</strong> up your phone or tablet</li>'+
             				'<li><span class="lblNotiOpen" ></span><strong>Open</strong> the notification from CFI</li>'+
-            				'<li><span class="lblNotiLogin" ></span> <p class="noteLastContent"><strong>Log in</strong> to Pingit to complete <br/>your purchase</p></li>'+
+            				'<li><span class="lblNotiLogin" ></span> <p class="noteLastContent"><strong>Log in</strong> to your mobile banking app to complete <br/>your purchase</p></li>'+
             				'</ul></div>';
             var nContent4 = '<hr><div class="notiNotSent"><div class="notiNotSentTxt fl">'+
             				'<p><strong>No notification?</strong> </p><p> Didn\'t receive a notification or want to '+
@@ -74,31 +74,31 @@ limitations under the License. -->
             var components = {
                 info: '<div><img src="../images/logo.png" /><h2>A new way to pay</h2><h4>Zapp is a free and secure way to <strong>pay on your mobile</strong>, straight from your <strong>bank account</strong>.</h4></div>',
                 payWithZappButton: '<div><h3>ID</h3><h4>Click to create Zapp code</h4></div><div><div class="icons pay-with-zapp-icon"></div></div>',
-                userOpenBankApp: '<h3>ID</h3><h4>Log in to <strong>Pingit</strong></h4>',
+                userOpenBankApp: '<h3>ID</h3><h4>Log in to <strong>your mobile banking app</strong></h4>',
                 selectZapp: '<h3>ID</h3><h4>Select <strong>Zapp</strong> to pay</h4>',
                 brnInfo: '<div><h3>ID</h3><h4>Pay with Zapp using your unique Zapp code</h4></div><div><div class="icons brn-icon"></div></div>',
                 confirmPurchase: '<div><h3>ID</h3><h4>Confirm payment to complete purchase</h4></div><div><div class="icons tick-icon"></div></div>',
-                payUsingBankApp: '<div><h3>ID</h3><h4>Pay with Zapp using Pingit</h4></div><div><div class="icons tick-icon"></div></div>',
-                payUsingBankAppText: '<div><h4>Tap the button below to open Pingit and log in to complete your purchase</h4></div>',
-                invokeBankAppLarge: '<p class="text-center"><a href="#" onclick="openApp()" class="button">Open Pingit</a></p>',
-                invokeBankAppLargeTablet: '<p class="text-left"><a href="#" onclick="openApp()" class="button">Open Pingit</a></p>',
+                payUsingBankApp: '<div><h3>ID</h3><h4>Pay with Zapp using your mobile banking app</h4></div><div><div class="icons tick-icon"></div></div>',
+                payUsingBankAppText: '<div><h4>Tap the button below to open your mobile banking app and log in to complete your purchase</h4></div>',
+                invokeBankAppLarge: '<p class="text-center"><a href="#" onclick="openApp()" class="button">Open banking app</a></p>',
+                invokeBankAppLargeTablet: '<p class="text-left"><a href="#" onclick="openApp()" class="button">Open banking app</a></p>',
                 invokeBankAppLargeCB: '<p class="text-center"><a href="#" onclick="openApp()" class="button">Open Pingit</a></p>',
                 invokeBankAppLargeTabletCB: '<p class="text-left"><a href="#" onclick="openApp()" class="button">Open Pingit</a></p>',
-                invokeBankAppSmall: '<p class="text-center">To pay on this device<br /><a href="#">Open Pingit &raquo;</a></p>',
+                invokeBankAppSmall: '<p class="text-center">To pay on this device<br /><a href="#">Open banking app &raquo;</a></p>',
                 zappCodeTimeout: '<p class="text-center">Your <strong>Zapp code</strong> has expired.<br /><br />Get a new <strong>Zapp code</strong> to complete your purchase<br /><br /><a href="#" onclick="newRequest()" class="button">Get Zapp Code</a></p>',
                 transactionTimeout: '<p class="text-center">Your transaction has expired.<br /><br />Get a new <strong>Zapp code</strong> to complete your purchase<br /><br /><a href="#" onclick="newRequest()" class="button">Get Zapp Code</a></p>',
                 requestFailure: '<p class="text-center">Sorry there was a network problem, please try again. <br /><a href="#" onclick="newRequest()" class="button">Get Zapp Code</a></p>',
                 noBankApp: '<div style="text-align: center;width: 85%;margin-top: 20px;margin-right: auto;"><img class="preimg" src="../images/icon_error.png"/><br><br><p class="text-center">None of apps on this device currently support Pay by Bank app.</p></div>',
                 followTheSteps: '<div style="text-align: center;width: 85%;margin-top: 20px;margin-right: auto;"><strong style="padding-bottom: 0px">Follow the steps below to complete this purchase on another device:</strong></div>',
-                payOtherDevice: '<h4 class="text-center">Tap the button below if Pingit is on another device<br /></h4>' +
+                payOtherDevice: '<h4 class="text-center">Tap the button below if your mobile banking app is on another device<br /></h4>' +
                 				'<br><a class="button" style="margin: 10px;" href="#" onclick="showCode()"><span style="font-size:17px"> Get <img class="getCodeImg" src="../images/squiggle-white.png"/> Code</span></a>',
                 brn: '<h3>ID</h3><h4>Enter this secure <strong>Zapp code</strong> to complete your purchase</h4>BRN',
-                openWithPNS: '<div><h3>ID</h3><h4>Open Pingit by actioning the notification</h4></div><div><div class="icons pay-with-zapp-icon"></div></div>',
+                openWithPNS: '<div><h3>ID</h3><h4>Open your mobile banking app by actioning the notification</h4></div><div><div class="icons pay-with-zapp-icon"></div></div>',
                 noNotification: '<p class="text-center">If you did not receive a notification or<br />to pay on another device<br /><a href="#" onclick="showCode()">Create a Zapp Code &raquo;</a></p>',
                 pbbainfo: '<div class="divPopUpHover"><img width="148px" height="56px" src="../images/PBBA_Logo_Orange_Large_01.png" /><h2>A new way to pay</h2><h4 >Pay by bank app is a free and secure<br/> way to pay on your mobile, straight<br/> from your bank account.</h4></div>',
                 pbbaleftinfo: '<div ><img width="148px" height="56px" src="../images/PBBA_Logo_Orange_Large_01.png" /><br/><h2>A new way to pay</h2><h4 style="font-size:17px !important;">Pay by bank app is a free and secure<br/> way to pay on your mobile, straight<br/> from your bank account.</h4></div>',
                 pbbahowstep1:'<span class="lblPick" ></span><strong>Pick</strong> up your phone or tablet',
-                pbbahowstep2:'<span class="lblLogin" ></span><strong>Log in</strong> to Pingit',
+                pbbahowstep2:'<span class="lblLogin" ></span><strong>Log in</strong> to your mobile banking app',
                 pbbahowstep3:'<span class="lblSelect"></span><strong>Select</strong> Pay by Bank app',
                 pbbahowstep4:'<span class="lblEnter"></span><strong>Enter</strong> the <img src="../images/icon_code.png" width="40px" class="imgCode"> below',
                 pbbahowstep5:'BRN',
