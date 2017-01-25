@@ -268,6 +268,7 @@ var TP_COOKIE_DISABLED_COOKIE = "TPCookieDisabled";
         if (!ele)
         {
             ele = document.createElement("iframe");
+            ele.style.display = "none";
             ele.id = "zappAction";
         }
         if (typeof zapp != "undefined" && typeof zapp.options != "undefined")
@@ -303,6 +304,7 @@ var TP_COOKIE_DISABLED_COOKIE = "TPCookieDisabled";
         if (!ele)
         {
             ele = document.createElement("iframe");
+            ele.style.display = "none";
             ele.id = "zappAction";
         }
         if (typeof zapp != "undefined" && typeof zapp.options != "undefined")

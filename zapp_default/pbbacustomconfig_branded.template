@@ -13,13 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License. */
 
 /* 
- * This configuration file is used to define and override variables and functions for the Pay By Bank App Branded or Custom Web Merchant Button.
- * 
- * As a default implementation, this file contains the Branded Web Merchant Button implementation.
- * 
- * If you want to implement the custom web merchant button, then copy the contents of pbbacustomconfig_custom.template into this file.
- * 
- * If you want to implement the branded web merchant button, then copy the contents of pbbacustomconfig_branded.template into this file.
+ * This configuration file is used to define and override variables and functions for the Pay By Bank App Branded Web Merchant Button.
  * 
  */
 
@@ -73,7 +67,7 @@ zapp.load(zappVersion, {
 		 *		NOTE: merchantRequestToPayResponseObject is assumed here to be the merchant's variable name of the JSON response object for the request to pay from the merchant server
 		 */
 		
-		 			var response = new zapppopup.response.payment({
+		     		var response = new zapppopup.response.payment({
 						success : true, // Leave it as is
 						secureToken : merchantRequestToPayResponseObject.secureToken,
 						brn : merchantRequestToPayResponseObject.pbbaCode,

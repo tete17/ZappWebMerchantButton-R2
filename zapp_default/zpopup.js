@@ -227,8 +227,6 @@ function setupPayConnect(url, document) {
 
 function redirectToCookieManagementUrl(url, pcid, cookieExpiryDays) {
 	
-	function redirectToCookieManagementUrl(url, pcid, cookieExpiryDays) {
-		
 		var xmlhttp = new XMLHttpRequest();
 		
 		if (xmlhttp.withCredentials === undefined) {
@@ -251,8 +249,7 @@ function redirectToCookieManagementUrl(url, pcid, cookieExpiryDays) {
 		
 	    xmlhttp.open("HEAD", url +  "cookie-management/index.html", true);
 	    xmlhttp.send();
-	}
-	
+	    
 }
 
 function listener(event){
@@ -280,11 +277,17 @@ function listener(event){
 	}
 	
 	if (event.data.indexOf(HAS_APP_COOKIE) == 0) {
-	    document.cookie = "hasApp=" + event.data.split('=')[1]  + '; path=/';
+		if (typeof event.data.split('=')[1] != "undefined") {
+			document.cookie = "hasApp=" + event.data.split('=')[1]  + '; path=/';
+		} else {
+			deleteCookie("hasApp");
+		}
+	    
 	}
 	
 	if (event.data.indexOf(PCID_COOKIE) == 0) {
-	    document.cookie = "pcid=" + event.data.split('=')[1]  + '; path=/';
+		if (event.data.split('=')[1] != "dummy")
+			document.cookie = "pcid=" + event.data.split('=')[1]  + '; path=/';
 	}
 	
 	

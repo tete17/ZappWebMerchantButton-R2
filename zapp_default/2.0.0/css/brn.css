@@ -1011,7 +1011,7 @@ and (max-device-height: 1280px)
 and (orientation:landscape) {
 
 .divTopBankApp {
-    height: 100px;
+    height: auto;
     width: 100%;
 }
 

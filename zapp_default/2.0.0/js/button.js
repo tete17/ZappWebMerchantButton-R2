@@ -188,7 +188,7 @@ limitations under the License. */
             var imageSuffix = ".svg";
             var defaultImagePath= "../images/";
             var coBrandedImagePath = "../images/co-branding/";
-            if (zapp != undefined && zapp.options.imageKey != undefined) {
+            if (typeof zapp != "undefined" && typeof zapp.options.imageKey != "undefined") {
             	imageKey = zapp.options.imageKey;
             }
             switch (imageKey) {

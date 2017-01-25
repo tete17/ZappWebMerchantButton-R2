@@ -146,7 +146,7 @@ limitations under the License. */
 
         	var self = this;
         	if (typeof zapppopup.customMode != "undefined")
-        		self.addJsFile(zapppopup.libUrl + "/js/zpopup-extras.js?"+Math.random());
+        		self.addJsFile(zapppopup.libUrl + "/js/zpopup-extras.js");
         	if (typeof zapppopup.customMode != "undefined")
             self.registerEventHandler('com.zapp.extras.loaded', function () {
             	self.addCssFile(zapppopup.libUrl + "/css/zapp.css");
@@ -163,6 +163,9 @@ limitations under the License. */
                       "com.zapp.transaction.timeout": function(data) {
                     	  sendEvent("pbba.transaction.timeout", clickedButton.id, []);
                       },
+                      "com.zapp.popup.close": function(data) {
+                    	  sendEvent("pbba.popup.close", clickedButton.id, []);
+                      },
                       "com.zapp.button.openapp.click": function(data) {
                     	zapppopup._invokeApp(data);
                       }
@@ -176,7 +179,7 @@ limitations under the License. */
             if (zapppopup._popup != null)
                 return zapppopup._popup;
             zapppopup._popup = new zapppopup.popup(ele.id);
-            if (zapppopup.isMobile1()) {
+            if (zapppopup.isMobile1() || typeof zapppopup.customMode != "undefined") {
 				zapppopup._popup.ele.style.display = "none";
                 document.body.appendChild(zapppopup._popup.ele);
 			} else {
@@ -596,7 +599,7 @@ limitations under the License. */
         var imageSuffix = ".svg";
         var defaultImagePath= "../images/";
         var coBrandedImagePath = "../images/co-branding/";
-        if (zapp != undefined && zapp.options.imageKey != undefined) {
+        if (typeof zapp != "undefined" && typeof zapp.options.imageKey != "undefined") {
         	imageKey = zapp.options.imageKey;
         }
         switch (imageKey) {

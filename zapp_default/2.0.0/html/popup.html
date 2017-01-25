@@ -88,15 +88,15 @@ limitations under the License. -->
                 zappCodeTimeout: '<p class="text-center">Your <strong>Zapp code</strong> has expired.<br /><br />Get a new <strong>Zapp code</strong> to complete your purchase<br /><br /><a href="#" onclick="newRequest()" class="button">Get Zapp Code</a></p>',
                 transactionTimeout: '<p class="text-center">Your transaction has expired.<br /><br />Get a new <strong>Zapp code</strong> to complete your purchase<br /><br /><a href="#" onclick="newRequest()" class="button">Get Zapp Code</a></p>',
                 requestFailure: '<p class="text-center">Sorry there was a network problem, please try again. <br /><a href="#" onclick="newRequest()" class="button">Get Zapp Code</a></p>',
-                noBankApp: '<div style="text-align: center;width: 85%;margin-top: 20px;margin-right: auto;"><img class="preimg" src="../images/icon_error.png"/><br><br><p class="text-center">None of apps on this device currently support Pay by Bank app.</p></div>',
+                noBankApp: '<div style="text-align: center;width: 95%;margin-top: 20px;margin-right: auto;"><img class="preimg" src="../images/icon_error.png"/><br><br><p class="text-center">None of apps on this device currently support Pay by Bank app.</p></div>',
                 followTheSteps: '<div style="text-align: center;width: 85%;margin-top: 20px;margin-right: auto;"><strong style="padding-bottom: 0px">Follow the steps below to complete this purchase on another device:</strong></div>',
                 payOtherDevice: '<h4 class="text-center">Tap the button below if Pingit is on another device<br /></h4>' +
                 				'<br><a class="button" style="margin: 10px;" href="#" onclick="showCode()"><span style="font-size:17px"> Get <img class="getCodeImg" src="../images/squiggle-white.png"/> Code</span></a>',
                 brn: '<h3>ID</h3><h4>Enter this secure <strong>Zapp code</strong> to complete your purchase</h4>BRN',
                 openWithPNS: '<div><h3>ID</h3><h4>Open Pingit by actioning the notification</h4></div><div><div class="icons pay-with-zapp-icon"></div></div>',
                 noNotification: '<p class="text-center">If you did not receive a notification or<br />to pay on another device<br /><a href="#" onclick="showCode()">Create a Zapp Code &raquo;</a></p>',
-                pbbainfo: '<div class="divPopUpHover"><img width="148px" height="56px" src="../images/PBBA_Logo_Orange_Large_01.png" /><h2>A new way to pay</h2><h4 >Pay by bank app is a free and secure<br/> way to pay on your mobile, straight<br/> from your bank account.</h4></div>',
-                pbbaleftinfo: '<div ><img width="148px" height="56px" src="../images/PBBA_Logo_Orange_Large_01.png" /><br/><h2>A new way to pay</h2><h4 style="font-size:17px !important;">Pay by bank app is a free and secure<br/> way to pay on your mobile, straight<br/> from your bank account.</h4></div>',
+                pbbainfo: '<div class="divPopUpHover"><img width="148px" height="56px" src="../images/PBBA_Logo_Orange_Large_01.png" /><h2>A new way to pay</h2><h4 >Pay by Bank app is a free and secure<br/> way to pay on your mobile, straight<br/> from your bank account.</h4></div>',
+                pbbaleftinfo: '<div ><img width="148px" height="56px" src="../images/PBBA_Logo_Orange_Large_01.png" /><br/><h2>A new way to pay</h2><h4 style="font-size:17px !important;">Pay by Bank app is a free and secure<br/> way to pay on your mobile, straight<br/> from your bank account.</h4></div>',
                 pbbahowstep1:'<span class="lblPick" ></span><strong>Pick</strong> up your phone or tablet',
                 pbbahowstep2:'<span class="lblLogin" ></span><strong>Log in</strong> to Pingit',
                 pbbahowstep3:'<span class="lblSelect"></span><strong>Select</strong> Pay by Bank app',
@@ -467,10 +467,8 @@ limitations under the License. -->
                 	} catch (e) {
                 		elem=window.parent.document.getElementById('cover').parentNode.removeChild(window.parent.document.getElementById('cover'));
                 	}
-                	if (typeof window.id != "undefined" && window.id.toString() != "CUSTOM")
-                    	sendEvent('com.zapp.popup.close', window.id, []);
-                	else
-                		window.parent.document.getElementById('zapp-popup').remove();
+                    sendEvent('com.zapp.popup.close', window.id, []);
+                		
             	}
             	
             }
