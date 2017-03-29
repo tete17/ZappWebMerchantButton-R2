@@ -176,11 +176,16 @@ limitations under the License. */
         _addPopup: function(ele)
         {
         	clickedButton=ele;
-            if (zapppopup._popup != null)
-                return zapppopup._popup;
+            if (zapppopup._popup != null) {
+            	if (typeof zapppopup._popup.ele != "undefined" && zapppopup._popup.ele != null) {
+            		zapppopup._popup.ele.style.display = "none";
+            	}
+            	return zapppopup._popup;
+            }
+                
             zapppopup._popup = new zapppopup.popup(ele.id);
+            zapppopup._popup.ele.style.display = "none";
             if (zapppopup.isMobile1() || typeof zapppopup.customMode != "undefined") {
-				zapppopup._popup.ele.style.display = "none";
                 document.body.appendChild(zapppopup._popup.ele);
 			} else {
 	            	if (ele.ele) 
@@ -239,8 +244,7 @@ limitations under the License. */
 			var isLowerResolution = false;
 			var destLeft = -60;
 			 
-			if ((width == 1280) || 
-				(width == 1024)) {
+			if ((width <= 1280)) {
 				isLowerResolution = true;
 				destLeft = -20;
 			}
@@ -256,7 +260,7 @@ limitations under the License. */
                 arrow.style.borderTopColor="#FFFFFF";
                 arrow.style.borderLeftColor="#FFFFFF";
 				if(isLowerResolution) {
-					document.getElementById('pbba-popup-frame').style.top = "-16px";
+					document.getElementById('pbba-popup-frame').style.top = "38px";
 				} else {
 					document.getElementById('pbba-popup-frame').style.top = "-6px";
 				}
