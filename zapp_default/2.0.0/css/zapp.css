@@ -61,7 +61,7 @@ limitations under the License. */
 
 #zapp-popup iframe
 {   
-    height:440px!important;
+    height:415px!important;
     overflow: hidden;
     background-color: white;
     border: 3px solid #FF6E00;
@@ -78,7 +78,7 @@ limitations under the License. */
 #zapp-popup.dark iframe
 {
     border-color: #FF6E00;
-    border-radius:10px; width:345px!important; height:320px!important
+    border-radius:10px; width:330px!important; height:295px!important
 }
 
 #zapp-popup.dark .zapp-arrow
@@ -176,7 +176,7 @@ and (max-device-width : 1024px) {
 	#zapp-popup.dark iframe
 	{
 		border-color: #FF6E00;
-		border-radius:10px; width:345px!important; height:300px!important
+		border-radius:10px; width:330px!important; height:295px!important
 	}
 }
 
@@ -261,7 +261,7 @@ and (max-device-width : 568px) {
 	#zapp-popup.dark iframe
 	{
 		border-color: #FF6E00;
-		border-radius:10px; width:345px!important; height:300px!important
+		border-radius:10px; width:330px!important; height:295px!important
 	}
 }
 

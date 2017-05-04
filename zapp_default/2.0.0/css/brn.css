@@ -134,7 +134,7 @@ hr {
 	display: none;
 }
 
-#left-column>div, #right-column>div {
+#left-column>div, #right-column>div, #confirmDiv>div {
 	padding: 15px 15px 0 15px;
 }
 
@@ -471,7 +471,8 @@ h4 {
 
 .content .codegenfail h4 {
 	margin-bottom: 60px;
-	line-height: 24px
+	line-height: 24px;
+	padding-left:0px;
 }
 
 .steps .codegenfail {
@@ -481,6 +482,117 @@ h4 {
 .steps .codegenfail .iconErrCodeFail {
 	margin: 20px 0 0;
 }
+
+/* Start - styles for Confirm popup   */
+.confirmWindow {
+   
+    text-align: center;
+    position: fixed;
+    padding: 0px;
+    height: 198px;
+    width: 406px;
+    background-color: rgba(251, 251, 251, 1);
+    border: 1px solid #FF6E00;
+    border-radius: 2px;
+    box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.24);
+    top: 50%;
+    left: 50%;
+    margin: -106px 0 0 -196px;
+   
+}
+
+#blanket {
+   background-color: #505050;
+    filter:alpha(opacity=50); /* IE */
+    opacity: 0.5; /* Safari, Opera */
+    -moz-opacity:0.50; /* FireFox */
+    z-index: 9002;
+    background-repeat:no-repeat;
+    background-position:center;
+    position:absolute;
+    top: 0px;
+    left: 0px;
+	
+}
+
+
+#wrapperDiv{
+	height: 100%; 
+	width: 100%; 
+	position: fixed; 
+	z-index: 9999; 
+	left: 0px; 
+	display: none;
+}
+
+.confirmDiv {
+	text-align:center;
+	height: 100%;
+	
+}
+#confirmDiv>div{
+	
+	margin: 24px auto;
+    width: 80%;
+    display: inline-block;
+	height: 95%;
+}
+
+
+.confirmDiv h4{
+	font-family: 'Source Sans Pro';
+	font-size: 20px;
+	color: rgba(48, 48, 48, 1);
+	text-align: center;
+	padding-left:0px;
+	margin-bottom: 30px;
+	
+}
+
+.confirmDivCloseBtn, .confirmDivCancelBtn {
+	
+	height: 40px;
+	width: 120px;
+	color: rgba(255, 110, 0, 1);
+	background-color: rgba(251, 251, 251, 1);
+	border: 1px solid rgba(255, 110, 0, 1);
+	border-radius: 4px;
+	margin: 0 6px ;
+	
+}
+.confirmBtn{
+	
+	font-family: 'Source Sans Pro';
+	font-size: 20px;
+	font-weight: 600;
+	/* color: rgba(255, 255, 255, 1); */
+	text-align: center;
+	top: 2px;
+    position: relative;
+	
+}
+.confirmDivCloseBtn:hover, .confirmDivCancelBtn:hover {
+	text-decoration: none;
+	background-color: rgba(255, 110, 0, 1);
+}
+.confirmDivCloseBtn:active, .confirmDivCancelBtn:active {
+	position: relative;
+	background-color: rgba(255, 110, 0, 1);
+	top: 1px;
+}
+.orangeButton {
+	padding: 5px 30px;
+}
+.orangeButton:hover {
+	background-color: rgba(255, 110, 0, 1);
+	color: #fff;
+	
+}
+.orangeButton:active {
+	color: #fff;
+}
+
+/* End - styles for Confirm popup   */
 
 .fl {float:left} .fr {float:right}
 
@@ -655,6 +767,40 @@ and (orientation: portrait) {
     	margin-bottom: 30px;
 	}
 
+/* Start - styles for Confirm popup   */
+
+	.confirmWindow {
+		
+		width: 264px !important;
+		height: 180px !important;
+		margin: -134px 0 0 -137px;
+	} 
+	
+	#confirmDiv>div {
+		width: 94%;
+		padding: 15px 2px 0 2px;
+	}
+	
+	.confirmDiv h4 {
+		font-size: 16px;
+		
+	}
+	
+
+	.confirmDivCloseBtn, .confirmDivCancelBtn {
+		font-size: 18px;
+		padding: 2px 30px;
+		
+	}
+	
+	.confirmBtn{
+		font-size: 18px;
+		top: -1px;
+		
+	}
+	
+	/* End - styles for Confirm popup   */
+	
 }
 
 .divTopBankApp {
@@ -829,6 +975,19 @@ and (max-device-width : 1024px) and (orientation : landscape) and
 		color: black;
 		font-size: 23px;
 	}
+	
+	/* Start - styles for Confirm popup   */
+	
+	.confirmWindow {
+		top:43% !important;
+		left: 45% !important;
+		width: 380px !important;
+		margin:-106px 0 0 -152px !important;
+	}
+	
+	/* End - styles for Confirm popup   */
+
+	
 }
 	
 @media (min-device-width : 768px) 
@@ -1001,6 +1160,13 @@ and (max-device-width : 1024px) and not (-webkit-min-device-pixel-ratio: 2)  {
 	.divTopBankApp h2 {
 		color: black;
 		font-size: 23px;
+	}
+	
+	.confirmWindow {
+		top:43% !important;
+		left: 45% !important;
+		width: 380px !important;
+		margin:-106px 0 0 -152px !important;
 	}
 }
 
@@ -1190,6 +1356,16 @@ and (orientation:landscape) {
 		color: black;
 		font-size: 23px;
 	}
+	
+	/* Start - styles for Confirm popup   */
+	
+	.confirmWindow{
+		
+		top:35% ;
+		left: 47%;
+	}
+	
+	/* End - styles for Confirm popup   */
 }
 
 

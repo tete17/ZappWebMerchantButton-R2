@@ -452,26 +452,6 @@ limitations under the License. -->
                 element.style.display = "none";
             }
 
-            function closePopup()
-            {
-            	var answer = confirm("Are you sure?\n\nSelect OK to choose another payment option\nSelect Cancel if you have already Paid by Bank app via Pingit");
-            	if (answer) {
-            		try {
-                		var isIE = (navigator.userAgent.indexOf("MSIE") != -1) || (navigator.userAgent.indexOf("Trident") != -1);
-                		if (isIE) {
-                			elem=window.parent.document.getElementById('cover').parentNode.removeChild(window.parent.document.getElementById('cover'));
-                		} else {
-                			window.parent.document.getElementById('cover').remove();
-                		}
-                			
-                	} catch (e) {
-                		elem=window.parent.document.getElementById('cover').parentNode.removeChild(window.parent.document.getElementById('cover'));
-                	}
-                    sendEvent('com.zapp.popup.close', window.id, []);
-                		
-            	}
-            	
-            }
 
             function sendEvent(type, id, data)
             {
@@ -516,6 +496,38 @@ limitations under the License. -->
             {
                 sendEvent("com.zapp.button.openapp.click");
             }
+			
+			function closePopupWindow()
+            {
+				try {
+					var isIE = (navigator.userAgent.indexOf("MSIE") != -1) || (navigator.userAgent.indexOf("Trident") != -1);
+					if (isIE) {
+						elem=window.parent.document.getElementById('cover').parentNode.removeChild(window.parent.document.getElementById('cover'));
+					} else {
+						window.parent.document.getElementById('cover').remove();
+					}
+						
+				} catch (e) {
+					elem=window.parent.document.getElementById('cover').parentNode.removeChild(window.parent.document.getElementById('cover'));
+				}
+				sendEvent('com.zapp.popup.close', window.id, []);
+		   
+			}
+			
+			function cancelPopupWindow()
+            {
+				document.getElementById('wrapperDiv').style.display= "none";
+				var blanket = document.getElementById('blanket');
+				
+				if (typeof blanket != "undefined" && blanket != null) {
+					try {
+						blanket.style.display="none";
+					} catch (e) {
+						document.getElementById('blanket').parentNode.removeChild(window.parent.document.getElementById('blanket'));
+					}
+				}
+			}
+			
 
         </script>
 </head>
@@ -532,10 +544,32 @@ limitations under the License. -->
 	<div class="clearfix"></div>
 	</div>
  -->
- <div id="cover" class="cover" style="display:none"></div>
- <div id="page" class="dark">
+<div id="cover" class="cover" style="display:none"></div>
+
+<div id="page" class="dark">
+<div id="blanket" style="display:none;"></div> 
+<div id="wrapperDiv" style="">
+	<div class="confirmWindow" style="">  
+	  
+		<div id="confirmDiv" class="confirmDiv">
+			<div class="content">
+				
+				
+				<h4>Have you already paid <br/> using your mobile banking app? </h4>
+				<div>
+				<a class="confirmDivCloseBtn orangeButton" href="#" onclick="cancelPopupWindow()" style="position:relative"><span class="confirmBtn">Yes</span></a>
+				<a class="confirmDivCancelBtn orangeButton" href="#" onclick="closePopupWindow()" style="position:relative"><span class="confirmBtn">No</span></a>
+				</div>
+				<div class="clrimg"></div>
+			</div>
+		</div>
+	  <!-- </div> -->
+	<div class="close icons close-icon" onclick="cancelPopupWindow()" style="float:left;">X</div>
+	</div>
+</div>
+
 		<h1>How to pay with Zapp</h1>
-		<div class="content">
+		<div class="content" id="contentDiv">
 			<div id="top-column" style="float:left;" class="divTopBankApp">
 				<div>
 					<h2 ></h2>
@@ -563,7 +597,25 @@ limitations under the License. -->
 				</div>
 			</div>
 		</div>
-		<div class="close icons close-icon" onclick="closePopup()" style="float:left;">X</div>
+		<div class="close icons close-icon" onclick="closePopup('wrapperDiv')" style="float:left;">X</div>
+		
+		<script>
+			var confirmDiv = document.getElementById('wrapperDiv');
+			var blanket = document.getElementById('blanket');
+			
+			function closePopup()
+            {
+				if (typeof blanket != "undefined" && blanket != null) {
+					blanket.style.height=document.getElementById('contentDiv').offsetHeight +"px";
+					blanket.style.width=document.getElementById('contentDiv').offsetWidth +"px";
+					blanket.style.display = "block";
+				}
+				confirmDiv.style.display = "block";
+            	
+            }
+		
+		</script>
+
 	</div>	
 </body>
 </html>

@@ -222,7 +222,12 @@ limitations under the License. */
                 height = 46;
             self.ele.innerHTML = '<iframe id="pbba-button-frame-'+self.id+'" src="' + zapp.libUrl + '/html/button.html?' + queryString + '" style="border: 0; scroll: none; display: block; height:' + height + 'px; width: 100%;" marginheight="0" marginwidth="0" frameborder="0"></iframe>';
 
-            if (!zapp.isMobile())
+            var hoverOverPopupEnabled = true;
+            if (typeof zapp != "undefined" && typeof zapp.options.hoverOverPopupEnabled != "undefined") {
+                     hoverOverPopupEnabled = zapp.options.hoverOverPopupEnabled;
+            }
+            
+            if (!zapp.isMobile() && hoverOverPopupEnabled)
             {
 
                 self.ele.onmouseover = function () {

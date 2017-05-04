@@ -30,6 +30,7 @@ var zappVersion = "2.0.0"; // Current web merchant button library version.
 var cookieManagementUrl = "https://www.paybybankapp.co.uk/" // Cookie management URL for PayConnect.
 var imageKey = 1; // Default imageKey is 1 for the standard Pay By Bank App Web Merchant Button.
 var merchantPollInterval = 5000; // Default merchant poll interval of 5 seconds to poll the merchant server for payment notification.
+var hoverOverPopupEnabled = true; // Flag to enable or disable the hover over popup
 
 
 /* Initialize PayConnect. */
@@ -251,5 +252,6 @@ zapp.load(zappVersion, {
 	},
 	cookieManagementUrl: cookieManagementUrl,
 	imageKey: imageKey,
-	merchantPollInterval: merchantPollInterval
+	merchantPollInterval: merchantPollInterval,
+    hoverOverPopupEnabled: hoverOverPopupEnabled
 });

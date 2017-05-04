@@ -184,8 +184,15 @@ limitations under the License. */
             }
                 
             zapppopup._popup = new zapppopup.popup(ele.id);
+            
+            var hoverOverPopupEnabled = true;
+            if (typeof zapp != "undefined" && typeof zapp.options.hoverOverPopupEnabled != "undefined") {
+                     hoverOverPopupEnabled = zapp.options.hoverOverPopupEnabled;
+            }
+            
             zapppopup._popup.ele.style.display = "none";
-            if (zapppopup.isMobile1() || typeof zapppopup.customMode != "undefined") {
+            
+            if (zapppopup.isMobile1() || typeof zapppopup.customMode != "undefined" || !hoverOverPopupEnabled) {
                 document.body.appendChild(zapppopup._popup.ele);
 			} else {
 	            	if (ele.ele) 
@@ -216,7 +223,11 @@ limitations under the License. */
             var iframe = zapppopup._popup.ele;
             var arrow = iframe.childNodes[1];
 
-          
+            var hoverOverPopupEnabled = true;
+            if (typeof zapp != "undefined" && typeof zapp.options.hoverOverPopupEnabled != "undefined") {
+                     hoverOverPopupEnabled = zapp.options.hoverOverPopupEnabled;
+            }
+            
             if (zapppopup.isMobile1())
             {
                 iframe.setAttribute("class", "zapp-popup-wrapper mobile");
@@ -247,6 +258,8 @@ limitations under the License. */
 			if ((width <= 1280)) {
 				isLowerResolution = true;
 				destLeft = -20;
+			} else {
+				size[1]= 305;
 			}
            
 
@@ -290,7 +303,11 @@ limitations under the License. */
             zapppopup.animate(iframe, {width: size[0], height: size[1], top: destTop, left: destLeft}, (zapppopup._popup.visible) ? 150 : 0);
             
             zapppopup._popup.visible = true;
-            zapppopup._popup.ele.style.display = "block";
+            
+            if (hoverOverPopupEnabled) {
+              zapppopup._popup.ele.style.display = "block";
+            }
+            
 
         },
         _positionContextPopup2: function(size)
