@@ -22,7 +22,7 @@ jQuery.support.cors = true;
 if (!window.console) console = {log: function() {}};
 
 /* Define the PBBA variables */
-var zappVersion = "2.0.0"; // Current web merchant button library version.
+var zappVersion = "2.0.7"; // Current web merchant button library version.
 var cookieManagementUrl = "https://www.paybybankapp.co.uk/"; // Cookie management URL for PayConnect.
 var merchantPollInterval = 5000; // Merchant poll interval of 5 seconds to poll the merchant server for payment notification.
 
@@ -251,8 +251,8 @@ function pollMerchantServerForPaymentNotification(secureToken) {
 							}, merchantPollInterval);
 						
 						// Check for the response status from the polled server. If the status is success (indicating an authorised or a declined transaction) then do the following:
-						
-							// Stop the timers and close the popup
+						// Stop the timers and close the popup
+							
 							zapppopup._stopTimers();
 							zapppopup._removePopup(true);
 						
@@ -271,8 +271,8 @@ function pollMerchantServerForPaymentNotification(secureToken) {
 					},
 					error : function(merchantGetPaymentStatusObject) {
 						// Error handling
-						
 						// Stop the polling process and then do the following:
+						
 						zapppopup._stopTimers(); // Stop the timers
 						zapppopup._removePopup(true); // Remove the popup
 					}

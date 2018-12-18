@@ -96,6 +96,10 @@ function zAddEventListener(type, listener)
         "2.0.0": {
             path: "2.0.0",
             file: "button.js"
+        },
+        "2.0.7": {
+            path: "2.0.7",
+            file: "button.js"
         }
     };
 
@@ -138,7 +142,7 @@ function zAddEventListener(type, listener)
             throw "ZAPP LOADER - Version " + version + " not found";
         
         this.version = version;
-        this.libUrl = this.url + this.versions[version].path + "/";
+        this.libUrl = this.url + this.versions[version].path;
 
         this.addJsFile(this.libUrl + "/js/" + this.versions[this.version].file, 'Zapp' + this.version);
 
